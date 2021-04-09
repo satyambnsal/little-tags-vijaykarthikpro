@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown/Dropdown";
-import AppLogo from "../../assets/applogo.png";
+import AppLogo from "../../assets/icons/logo.svg";
 
 export default function Header() {
   const [dropdown, setDropdown] = useState(false);
