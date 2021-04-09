@@ -41,6 +41,38 @@
                 padding-bottom: 8px;
                 font-weight: 600;
             }
+
+            .men {
+                transform: scale(1);
+                transition: 0.2s;
+
+                &:hover {
+                    transform: scale(1.1);
+                    transition: 0.2s;
+                    filter: drop-shadow(-30px 10px 10px black);
+                }
+
+                &:active {
+                    transform: scale(1.08);
+                    filter: drop-shadow(-30px 10px 10px black);
+                }
+            }
+
+            .women {
+                transform: scale(1);
+                transition: 0.15s;
+
+                &:hover {
+                    transform: scale(1.1);
+                    transition: 0.15s;
+                    filter: drop-shadow(30px 10px 10px black);
+                };
+
+                &:active {
+                    transform: scale(1.08);
+                    filter: drop-shadow(30px 10px 10px black);
+                }
+            }
         }
 
     }
@@ -70,6 +102,22 @@
 
             h2 {
                 font-weight: 600;
+            }
+
+            div {
+                transform: scale(1);
+                transition: 0.15s;
+
+                &:hover {
+                    transform: scale(1.1);
+                    transition: 0.15s;
+                    filter: drop-shadow(20px 10px 10px black);
+                };
+
+                &:active {
+                    transform: scale(1.08);
+                    filter: drop-shadow(20px 10px 10px black);
+                }
             }
         }
     }
