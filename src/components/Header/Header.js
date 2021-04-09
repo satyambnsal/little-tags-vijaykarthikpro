@@ -1,73 +1,58 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
-import Dropdown from "./Dropdown/Dropdown";
-import AppLogo from "../../assets/icons/logo.svg";
+// import Dropdown from "./Dropdown/Dropdown";
+import AppLogo from "../../assets/icons/logo-symbol.png";
+import SearchIcon from "../../assets/icons/search.svg";
+import CartIcon from "../../assets/icons/cart.svg";
+import GlobeIcon from "../../assets/icons/globe.svg";
+import WishlistIcon from "../../assets/icons/wishlist.svg";
+import ProfileIcon from "../../assets/icons/person.svg";
+
+
 
 export default function Header() {
-  const [dropdown, setDropdown] = useState(false);
-  const onMouseHover = () => {
-    setDropdown(true);
-  };
-  const onMouseLeave = () => {
-    setDropdown(false);
-  };
+  // const [dropdown, setDropdown] = useState(false);
+  // const onMouseHover = () => {
+  //   setDropdown(true);
+  // };
+  // const onMouseLeave = () => {
+  //   setDropdown(false);
+  // };
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
-        <img src={AppLogo} alt="" width="50px" height="50px" />
-        <span className="title">StyleBeast</span>
-      </div>
+      <div className="left">
+        <img src={AppLogo} alt="" width="" />
+        <span className="title">Style Beast</span>
 
-      <ul className="nav-category">
-        <li className="nav-item">
-          <Link to="/" className="nav-links">
-            Men
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/" className="nav-links">
-            Women
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/" className="nav-links">
-            Offers
-          </Link>
-        </li>
-      </ul>
-      <ul className="nav-menu">
-        <li className="nav-item">
-          <Link to="/" className="nav-links">
-            Search
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/" className="nav-links">
-            Language Support
-          </Link>
-        </li>
-        <li
-          className="nav-item"
-          onMouseEnter={onMouseHover}
-          onMouseLeave={onMouseLeave}
-        >
-          <Link to="/" className="nav-links">
-            Profile
-          </Link>
-          {dropdown && <Dropdown />}
-        </li>
-        <li className="nav-item">
-          <Link to="/" className="nav-links">
-            Wishlist
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/" className="nav-links">
-            Cart
-          </Link>
-        </li>
-      </ul>
+        <Link to="/" className="nav-links">
+          Men
+        </Link>
+        <Link to="/offers" className="nav-links">
+          Women
+        </Link>
+        <Link to="/offers" className="nav-links">
+          Offers
+        </Link>
+      </div>
+      <div className="right">
+        <input type="text" id="filter" placeholder="Search items..." />
+        <Link to="/" className="nav-links">
+          <img src={SearchIcon} alt="" />
+        </Link>
+        <Link to="/" className="nav-links">
+          <img src={GlobeIcon} alt="" />
+        </Link>
+        <Link to="/account" className="nav-links">
+          <img src={ProfileIcon} alt="" />
+        </Link>
+        <Link to="/" className="nav-links">
+          <img src={WishlistIcon} alt="" />
+        </Link>
+        <Link to="/account" className="nav-links">
+          <img src={CartIcon} alt="" />
+        </Link>
+      </div>
     </nav>
   );
 }
