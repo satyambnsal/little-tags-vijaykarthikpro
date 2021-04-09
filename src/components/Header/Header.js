@@ -9,6 +9,8 @@ import GlobeIcon from "../../assets/icons/globe.svg";
 import WishlistIcon from "../../assets/icons/wishlist.svg";
 import ProfileIcon from "../../assets/icons/person.svg";
 
+
+
 export default function Header() {
   // const [dropdown, setDropdown] = useState(false);
   // const onMouseHover = () => {
