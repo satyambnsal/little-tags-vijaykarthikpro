@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import * as ROUTES from "./constants/routes";
 import AccountPage from "./components/AccountPage/AccountPage";
+import Login from "./components/Login/Login";
 import ProductsListPage from "./components/ProductsListPage/ProductListPage";
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
             <HomePage />
           </Route>
           <Route path={ROUTES.ACCOUNT}>
-            <AccountPage />
+            <Login />
           </Route>
           <Route path={ROUTES.OFFERS}>
             <ProductsListPage />

@@ -1,0 +1,15 @@
+.outer {
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  margin: 100px 400px 100px 400px;
+  font-size: 20px;
+
+  .inner {
+    display: flex;
+    align-items: center;
+  }
+}
