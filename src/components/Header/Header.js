@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown/Dropdown";
@@ -10,13 +10,7 @@ import WishlistIcon from "../../assets/icons/wishlist.svg";
 import ProfileIcon from "../../assets/icons/person.svg";
 
 export default function Header() {
-  const [dropdown, setDropdown] = useState(false);
-  const onMouseEnter = () => {
-    setDropdown(true);
-  };
-  const onMouseLeave = () => {
-    setDropdown(false);
-  };
+
   return (
     <nav className="navbar">
       <div className="left">
@@ -32,23 +26,24 @@ export default function Header() {
         <Link to="/offers" className="nav-links">
           Offers
         </Link>
+
       </div>
       <div className="right">
         <input type="text" id="filter" placeholder="Search items..." />
         <div className="nav-links">
           <img src={SearchIcon} alt="" />
         </div>
-        <div>
+        <div className="menu-item">
           <Link to="/" className="nav-links">
-            <img src={GlobeIcon} alt="" />
+            <img src={GlobeIcon} alt=""/>
           </Link>
-          {/* {dropdown && <Dropdown type="language" />} */}
+          <Dropdown type="language"/>
         </div>
-        <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <div className="menu-item">
           <Link to="/account" className="nav-links">
-            <img src={ProfileIcon} alt="" />
+            <img src={ProfileIcon} alt=""/>
           </Link>
-          {dropdown && <Dropdown type="profile" />}
+          <Dropdown type="profile"/>
         </div>
         <Link to="/" className="nav-links">
           <img src={WishlistIcon} alt="" />
