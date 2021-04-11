@@ -1,22 +1,50 @@
-import React from "react";
+import React,{ useState } from "react";
 import "./Card.scss";
+import WishlistIcon from '../../assets/icons/wishlist-black-border.svg';
+import WishlistFilledIcon from '../../assets/icons/wishlist-filled-black-img.svg';
+
 
 export default function Card(props) {
+
+  const [isWishlist, setWishlist] = useState(false)
+
+  const wishlistIcon = () =>{
+    if(isWishlist) {
+      return <img src={WishlistFilledIcon} alt=""/>
+    } else {
+      return <img src={WishlistIcon} alt=""/>
+    }
+  }
+
+  const displayTitleText = (title) =>{
+    const words = title.split(' ')
+    if(words.length > 4) {
+      const letters = title.substring(0,23);
+      return <span className="title">{`${letters}...`}</span>
+    } else {
+      return <span className="title">{title}</span>
+    }
+    
+  }
+
   return (
-    <div className="main_content">
+    <div className="main-content">
       {props.data.map((item) => {
         return (
           <div className="card" key={item.id}>
-            <div className="card_img">
+            <div className="card-img">
               <img src={item.image} alt="" />
             </div>
-            <div className="card_header">
-              <h2>{item.title}</h2>
+            <div className="card-header">
+              {displayTitleText(item.title)}
               <p className="price">
                 <span>&#8377;</span>
-                {item.price}
+                <span className="price-text">{item.price}</span>
               </p>
-              <div className="btn">Add to wishlist</div>
+              {/* <button className="wishlist" onClick={()=> setWishlist(!isWishlist)}>
+                {wishlistIcon()}
+                <span className="wishlist-btn-text">Add to Wishlist</span>
+              </button> */}
             </div>
           </div>
         );

@@ -1,80 +1,90 @@
 @use '../../../library' as library;
-.main_content {
-  position: relative;
+
+
+.main-content {
   display: flex;
-  width: 60%;
-  height: 100%;
-  margin: 50px auto;
-  padding: 50px 0 0;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+
   .card {
-    width: 25%;
-    border-radius: 15px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    position: relative;
-    -webkit-transform: scale(0.8);
-    transform: scale(0.8);
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    margin-bottom: 50px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    transform: scale(1); 
+    transition: 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.2s;
+    }
+
+    &:active {
+      transform: scale(1); 
+      transition: 0.2s;
+    }
+    
+    .card-img {
+      width: 220px;
+      height: 300px;
+      background-color: white;
+      border-radius: 5px;
+      padding: 15px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      
+    }
+
+    .card-header {
+      width: 250px;
+      margin-top: 10px;
+
+      .title {
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .price {
+        margin: 5px 0 5px 0;
+        
+
+        span {
+          background: -webkit-radial-gradient(#f2e205, #d99e32, #d98723);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-weight: 600;
+        }
+
+        .price-text {
+          margin-left: 5px;
+        }
+
+      }
+
+      .wishlist {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px;
+
+        img {
+          width: 18px;
+          height: 18px;
+        }
+
+        .wishlist-btn-text {
+          margin-left: 10px;
+          font-family: 'Poppins', sans-serif;
+          font-size: 15px;
+          font-weight: 600;
+        }
+      }
+    }
   }
-  .card_img {
-    margin-top: -5vw;
-  }
-  .card_img img {
-    //width: 200px;
-    width: 100px;
-  }
-  .card_header {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    color: #fff;
-    margin: 25px 0;
-  }
-}
 
-.main_content .card .card_header h2 {
-  font-size: 14px;
-}
-
-.main_content .card .card_header p {
-  font-size: 14px;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.3);
-  margin: 8px 0;
-}
-
-.main_content .card .card_header .price {
-  font-size: 25px;
-  color: library.$logo-color;
-  text-align: start;
-}
-
-.main_content .card .card_header .price span {
-  font-size: 15px;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.main_content .card:hover {
-  background-color: #2b3039;
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-.main_content .card:hover .btn {
-  background-color: library.$logo-color;
-  color: #fff;
 }
