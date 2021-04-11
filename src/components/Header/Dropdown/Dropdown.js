@@ -35,8 +35,8 @@ export default function Dropdown({ type }) {
 
 
   return (
-    <div className="dropdown-menu">
-      <ul onClick={handleClick} >
+    <div >
+      <ul className="dropdown-menu" onClick={handleClick} >
         {displayDropDownList()}
       </ul>
     </div>
