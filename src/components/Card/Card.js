@@ -39,7 +39,7 @@ export default function Card(props) {
                 <span className="price-text">{item.price}</span>
               </p>
               <button
-                className="wishlist"
+                className="wishlist-btn"
                 onClick={() => setWishlist(!isWishlist)}
               >
                 {wishlistIcon()}

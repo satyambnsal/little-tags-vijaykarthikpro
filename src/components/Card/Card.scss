@@ -15,7 +15,7 @@
     &:hover {
       transform: scale(1.1);
       transition: 0.2s;
-      .wishlist {
+      .wishlist-btn {
         // display: block;
         visibility: visible;
       }
@@ -62,7 +62,7 @@
     }
   }
 }
-.wishlist {
+.wishlist-btn {
   width: 220px;
   display: flex;
   align-items: center;
