@@ -4,9 +4,10 @@ import HomePage from "./components/HomePage/HomePage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import * as ROUTES from "./constants/routes";
-import AccountPage from "./components/AccountPage/AccountPage";
+// import AccountPage from "./components/AccountPage/AccountPage";
 import Login from "./components/Login/Login";
 import ProductsListPage from "./components/ProductsListPage/ProductListPage";
+import ProductDetailsPage from "./components/ProductDetailsPage/ProductDetailsPage"
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path={ROUTES.OFFERS}>
             <ProductsListPage />
+          </Route>
+          <Route path={ROUTES.PRODUCT_DETAILS}>
+            <ProductDetailsPage />
           </Route>
         </Switch>
 
