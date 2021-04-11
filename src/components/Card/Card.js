@@ -1,31 +1,28 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import "./Card.scss";
-import WishlistIcon from '../../assets/icons/wishlist-black-border.svg';
-import WishlistFilledIcon from '../../assets/icons/wishlist-filled-black-img.svg';
-
+import WishlistIcon from "../../assets/icons/wishlist-black-border.svg";
+import WishlistFilledIcon from "../../assets/icons/wishlist-filled-black-img.svg";
 
 export default function Card(props) {
+  const [isWishlist, setWishlist] = useState(false);
 
-  const [isWishlist, setWishlist] = useState(false)
-
-  const wishlistIcon = () =>{
-    if(isWishlist) {
-      return <img src={WishlistFilledIcon} alt=""/>
+  const wishlistIcon = () => {
+    if (isWishlist) {
+      return <img src={WishlistFilledIcon} alt="" />;
     } else {
-      return <img src={WishlistIcon} alt=""/>
+      return <img src={WishlistIcon} alt="" />;
     }
-  }
+  };
 
-  const displayTitleText = (title) =>{
-    const words = title.split(' ')
-    if(words.length > 4) {
-      const letters = title.substring(0,23);
-      return <span className="title">{`${letters}...`}</span>
+  const displayTitleText = (title) => {
+    const words = title.split(" ");
+    if (words.length > 4) {
+      const letters = title.substring(0, 23);
+      return <span className="title">{`${letters}...`}</span>;
     } else {
-      return <span className="title">{title}</span>
+      return <span className="title">{title}</span>;
     }
-    
-  }
+  };
 
   return (
     <div className="main-content">
@@ -41,10 +38,13 @@ export default function Card(props) {
                 <span>&#8377;</span>
                 <span className="price-text">{item.price}</span>
               </p>
-              {/* <button className="wishlist" onClick={()=> setWishlist(!isWishlist)}>
+              <button
+                className="wishlist"
+                onClick={() => setWishlist(!isWishlist)}
+              >
                 {wishlistIcon()}
                 <span className="wishlist-btn-text">Add to Wishlist</span>
-              </button> */}
+              </button>
             </div>
           </div>
         );

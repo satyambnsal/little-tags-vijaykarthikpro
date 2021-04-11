@@ -10,14 +10,13 @@ import WishlistIcon from "../../assets/icons/wishlist.svg";
 import ProfileIcon from "../../assets/icons/person.svg";
 
 export default function Header() {
-
   return (
     <nav className="navbar">
       <div className="left">
-        <img src={AppLogo} alt="" width="" />
+        <img src={AppLogo} alt="" />
         <span className="title">Style Beast</span>
 
-        <Link to="/" className="nav-links">
+        <Link to="/offers" className="nav-links">
           Men
         </Link>
         <Link to="/offers" className="nav-links">
@@ -26,7 +25,6 @@ export default function Header() {
         <Link to="/offers" className="nav-links">
           Offers
         </Link>
-
       </div>
       <div className="right">
         <input type="text" id="filter" placeholder="Search items..." />
@@ -35,15 +33,15 @@ export default function Header() {
         </div>
         <div className="menu-item">
           <Link to="/" className="nav-links">
-            <img src={GlobeIcon} alt=""/>
+            <img src={GlobeIcon} alt="" />
           </Link>
-          <Dropdown type="language"/>
+          <Dropdown type="language" />
         </div>
         <div className="menu-item">
           <Link to="/account" className="nav-links">
-            <img src={ProfileIcon} alt=""/>
+            <img src={ProfileIcon} alt="" />
           </Link>
-          <Dropdown type="profile"/>
+          <Dropdown type="profile" />
         </div>
         <Link to="/" className="nav-links">
           <img src={WishlistIcon} alt="" />

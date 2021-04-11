@@ -9,9 +9,9 @@ export default function ProductListPage() {
   return (
     <div className="list-container">
       <div className="filter">
-        FILTERS
+        <h2>FILTERS</h2>
         <div>
-          <span>Categories</span>
+          <span className="main-title">Categories</span>
           <ul>
             <li>
               <label>
@@ -40,7 +40,7 @@ export default function ProductListPage() {
           </ul>
         </div>
         <div>
-          <span>Price</span>
+          <span className="main-title">Price</span>
 
           <ul>
             <li>
@@ -64,7 +64,7 @@ export default function ProductListPage() {
           </ul>
         </div>
         <div>
-          <span>Color</span>
+          <span className="main-title">Color</span>
           <ul>
             <li>
               <label>
@@ -94,7 +94,7 @@ export default function ProductListPage() {
         </div>
       </div>
 
-      <Card data={data} />
+      <Card className="card-container" data={data} />
     </div>
   );
 }

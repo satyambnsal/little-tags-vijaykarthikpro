@@ -14,7 +14,6 @@
     align-items: center;
 
     .menu-item {
-
       &:hover {
         .dropdown-menu {
           visibility: visible;
@@ -24,7 +23,7 @@
   }
   .title {
     font-family: "Gloria Hallelujah";
-    font-size: 35px;
+    font-size: 30px;
     padding: 0px 20px 0 20px;
   }
   .nav-links {
@@ -39,7 +38,6 @@
     border-radius: 20px;
   }
 }
-
 
 .dropdown-menu {
   visibility: hidden;
@@ -69,6 +67,3 @@
     }
   }
 }
-
-
-
