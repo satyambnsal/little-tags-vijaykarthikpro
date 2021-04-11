@@ -1,23 +1,100 @@
-import React from "react";
+import React, { useState } from "react";
 import products from "../../data/products";
 import "./ProductListPage.scss";
+import Card from "../Card/Card";
 
-const MainContent = () => {
-  const listItems = products.map((item) => (
-    <div className="card" key={item.id}>
-      <div className="card_img">
-        <img src={item.image} alt="" />
+export default function ProductListPage() {
+  const [data, setData] = useState(products);
+
+  return (
+    <div className="list-container">
+      <div className="filter">
+        FILTERS
+        <div>
+          <span>Categories</span>
+          <ul>
+            <li>
+              <label>
+                <input type="radio" />
+                <span>Jackets</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" />
+                <span>Electronics</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" />
+                <span>T-shirts</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="radio" />
+                <span>Jewellery</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <span>Price</span>
+
+          <ul>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <span>1000-2000</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <span>2000-4000</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <span>5000-10000 </span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <span>Color</span>
+          <ul>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <span>White</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <span>Black</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <span>Red</span>
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" />
+                <span>Blue</span>
+              </label>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="card_header">
-        <h2>{item.title}</h2>
-        <p className="price">
-          <span>&#8377;</span>
-          {item.price}
-        </p>
-        <div className="btn">Add to wishlist</div>
-      </div>
+
+      <Card data={data} />
     </div>
-  ));
-  return <div className="main_content">{listItems}</div>;
-};
-export default MainContent;
+  );
+}
