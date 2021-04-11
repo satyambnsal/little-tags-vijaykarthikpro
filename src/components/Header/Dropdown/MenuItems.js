@@ -1,17 +1,25 @@
-export const MenuItems = [
+export const ProfileItems = [
   {
     title: "Account",
     path: "/account",
-    cName: "dropdown-link",
   },
   {
     title: "Orders",
-    path: "/Orders",
-    cName: "dropdown-link",
+    path: "/orders",
   },
   {
-    title: "LogOut",
-    path: "/LogOut",
-    cName: "dropdown-link",
+    title: "Log Out",
+    path: "/logout",
+  },
+];
+
+export const LanguageItems = [
+  {
+    title: "Hindi",
+    path: "/hindi",
+  },
+  {
+    title: "English",
+    path: "/english",
   },
 ];
