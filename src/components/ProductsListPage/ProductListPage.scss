@@ -1,0 +1,41 @@
+@use '../../../library';
+
+.list-container {
+  display: flex;
+  padding: 40px;
+
+  .filter {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .main-title {
+      font-size: 20px;
+      font-weight: 300;
+    }
+    h2 {
+      margin-bottom: 30px;
+    }
+    div {
+      margin-bottom: 40px;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    input {
+      margin-right: 10px;
+
+      // &:active {
+      //   background-color: -webkit-radial-gradient(#f2e205, #d99e32, #d98723);
+      // }
+    }
+  }
+
+  .card-container {
+    width: 70%;
+  }
+}

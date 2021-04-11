@@ -1,0 +1,91 @@
+@use '../../../library' as library;
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+
+  .card {
+    margin: 0 auto;
+    margin-bottom: 60px;
+    transform: scale(1);
+    transition: 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: 0.2s;
+      .wishlist {
+        // display: block;
+        visibility: visible;
+      }
+    }
+
+    .card-img {
+      width: 220px;
+      height: 300px;
+      background-color: white;
+      border-radius: 5px;
+      padding: 15px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .card-header {
+      width: 250px;
+      margin-top: 10px;
+
+      .title {
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .price {
+        margin: 5px 0 5px 0;
+
+        span {
+          background: -webkit-radial-gradient(#f2e205, #d99e32, #d98723);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-weight: 600;
+        }
+
+        .price-text {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+.wishlist {
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  visibility: hidden;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+
+  &:hover {
+    background: linear-gradient(to right, #d99e32, #d98723);
+  }
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .wishlist-btn-text {
+    margin-left: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
