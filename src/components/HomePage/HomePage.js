@@ -2,7 +2,7 @@ import React from "react";
 import './HomePage.scss'
 import { Link } from "react-router-dom";
 // import Routes from '../../constants/routes'
-import HomeBanner from '../../assets/images/home-page-banner.svg'
+import Banner from '../../assets/images/banner-style-beast.png';
 import MenPortrait from '../../assets/images/men-portrait.svg'
 import WomenPortrait from '../../assets/images/women-portrait.svg'
 import JacketsImg from '../../assets/images/jackets.svg'
@@ -13,7 +13,7 @@ import JeweleryImg from '../../assets/images/jewelery.svg'
 export default function HomePage() {
   return (<div className="home-container">
     <div className="banner-section">
-      <img className="banner" src={HomeBanner} alt="img"/>
+      <img className="banner" src={Banner} alt="img"/>
     </div>
     <div className="section-1">
       <h1>COLLECTIONS</h1>
