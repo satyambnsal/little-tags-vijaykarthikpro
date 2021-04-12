@@ -13,18 +13,23 @@ export default function Header() {
   return (
     <nav className="navbar">
       <div className="left">
-        <img src={AppLogo} alt="" />
-        <span className="title">Style Beast</span>
-
-        <Link to="/offers" className="nav-links">
-          Men
-        </Link>
-        <Link to="/offers" className="nav-links">
-          Women
-        </Link>
-        <Link to="/offers" className="nav-links">
-          Offers
-        </Link>
+        <div>
+          <Link to="/" className="left nav-links">
+            <img src={AppLogo} alt="" />
+            <span className="title">Style Beast</span>
+          </Link>
+        </div>
+        <div>
+          <Link to="/products/men" className="nav-links">
+            Men
+          </Link>
+          <Link to="/products/women" className="nav-links">
+            Women
+          </Link>
+          <Link to="/products/offers" className="nav-links">
+            Offers
+          </Link>
+        </div>
       </div>
       <div className="right">
         <input type="text" id="filter" placeholder="Search items..." />

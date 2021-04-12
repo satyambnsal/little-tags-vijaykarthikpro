@@ -7,7 +7,7 @@ import * as ROUTES from "./constants/routes";
 // import AccountPage from "./components/AccountPage/AccountPage";
 import Login from "./components/Login/Login";
 import ProductsListPage from "./components/ProductsListPage/ProductListPage";
-import ProductDetailsPage from "./components/ProductDetailsPage/ProductDetailsPage"
+import ProductDetailsPage from "./components/ProductDetailsPage/ProductDetailsPage";
 
 function App() {
   return (
@@ -22,6 +22,9 @@ function App() {
             <Login />
           </Route>
           <Route path={ROUTES.OFFERS}>
+            <ProductsListPage />
+          </Route>
+          <Route path={ROUTES.PRODUCT}>
             <ProductsListPage />
           </Route>
           <Route path={ROUTES.PRODUCT_DETAILS}>
