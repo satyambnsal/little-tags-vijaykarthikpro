@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./Card.scss";
+import { Link, Switch, Route } from "react-router-dom";
 import WishlistIcon from "../../assets/icons/wishlist-black-border.svg";
 import WishlistFilledIcon from "../../assets/icons/wishlist-filled-black-img.svg";
+import ProductDetailsPage from "../ProductDetailsPage/ProductDetailsPage";
 
 export default function Card(props) {
   const [isWishlist, setWishlist] = useState(false);
@@ -24,11 +26,11 @@ export default function Card(props) {
     }
   };
 
-  return (
-    <div className="main-content">
-      {props.data.map((item) => {
-        return (
-          <div className="card" key={item.id}>
+  const displayProducts = () => {
+    return props.data.map((item) => {
+      return (
+        <Link key={item.id} to={`/product-details/${item.id}`}>
+          <div className="card card-link" key={item.id}>
             <div className="card-img">
               <img src={item.image} alt="" />
             </div>
@@ -47,8 +49,18 @@ export default function Card(props) {
               </button>
             </div>
           </div>
-        );
-      })}
-    </div>
+        </Link>
+      );
+    });
+  };
+  return (
+    <>
+      <div className="main-content">{displayProducts()}</div>
+      <Switch>
+        <Route path="/product-details/:id">
+          <ProductDetailsPage />
+        </Route>
+      </Switch>
+    </>
   );
 }

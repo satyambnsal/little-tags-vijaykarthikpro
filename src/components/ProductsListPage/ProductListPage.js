@@ -94,7 +94,7 @@ export default function ProductListPage() {
         </div>
       </div>
 
-      <Card className="card-container" data={data} />
+      <Card className="card-container nav-links" data={data} />
     </div>
   );
 }
