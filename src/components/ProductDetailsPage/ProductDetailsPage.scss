@@ -168,3 +168,23 @@
         
     }
 }
+
+
+@media screen and (min-width: 0px) and (max-width: 650px) {
+    .product-details-container {
+
+        .details {
+            @include library.flex-column-center;
+
+            .image-carousel {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .description {
+                width: 100%;
+                margin-left: 50px;
+            }
+        }
+    }
+}
