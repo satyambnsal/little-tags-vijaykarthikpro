@@ -9,6 +9,7 @@ import JacketsImg from "../../assets/images/jackets.svg";
 import TshirtsImg from "../../assets/images/tshirts.svg";
 import ElectronicsImg from "../../assets/images/electronics.svg";
 import JeweleryImg from "../../assets/images/jewelery.svg";
+
 export default function HomePage() {
   return (
     <div className="home-container">

@@ -1,15 +1,37 @@
 import React, { useState } from "react";
+import { useLocation } from 'react-router-dom';
 import "./ProductDetailsPage.scss";
 import ProductDetailsImg from "../../assets/images/product-details-img.svg";
 import Utils from "../../Utils";
 import CartIcon from "../../assets/icons/cart-filled.svg";
 import WishlistIcon from "../../assets/icons/wishlist-filled.svg";
+import Products from '../../data/products';
+import { useEffect } from "react";
 // import Carousel from '../carousel/Carousel'
 // import SimilarProducts from "../SimilarProducts/SimilarProducts";
 
 export default function ProductDetailsPage() {
   // const [size, setSize] = useState()
   const [quantityCount, setQuantityCount] = useState(1);
+  const [product, setProduct] = useState({});
+  let location = useLocation();
+  let id = location.pathname.split("/")[2];
+  console.log("id: ",id);
+
+ 
+
+  useEffect(()=>{
+    Products.filter((product) =>{
+      // console.log("product from products: ",product);
+      if(product.id.toString() === id) {
+        console.log("product: ",product);
+        setProduct(product);
+      }
+      return null;
+    })
+    
+  },[id])
+  
 
   const displaySizes = () => {
     const sizesList = Object.values(Utils.SIZES);
@@ -35,14 +57,13 @@ export default function ProductDetailsPage() {
     <div className="product-details-container">
       <div className="details">
         <div className="image-carousel">
-          <img src={ProductDetailsImg} alt="" />
+          <img src={product.image ? product.image : ProductDetailsImg} alt="" />
         </div>
         <div className="description">
-          <h2 className="title">Jacket</h2>
-          <h3>Price: $100</h3>
+          <h2 className="title">{product.title ? product.title : 'Jacket'}</h2>
+          <h3>Price: ${product.price}</h3>
           <p className="description-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry
+            {product.description}
           </p>
           <h3 className="size-title">Size</h3>
           <div className="sizes-list">{displaySizes()}</div>

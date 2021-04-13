@@ -1,10 +1,38 @@
-import React /* useState */ from "react";
+import React,{ useState }  from "react";
+import { useLocation } from 'react-router-dom';
 import products from "../../data/products";
 import "./ProductListPage.scss";
 import Card from "../Card/Card";
+import { useEffect } from "react";
 
 export default function ProductListPage() {
-  // const [data, setData] = useState(products);
+  const [data, setData] = useState(products);
+
+  let location = useLocation();
+  let pathName = location.pathname.split('/')[2];
+
+  useEffect(()=>{
+
+    const routePathMap = {
+      men : 'men clothing',
+      women : 'women clothing',
+      electronics : 'electronics',
+      jewellery : 'jewelery'
+    }
+
+    const isPathMatching = (path) => {
+      return Object.keys(routePathMap).includes(path)
+    }
+
+    if(isPathMatching(pathName)) {
+      const filteredProducts = products.filter( product => { 
+        if(product.category === routePathMap[pathName]) return product;
+        return null;
+      });
+      setData(filteredProducts);
+    }
+  },[pathName]);
+  
 
   return (
     <div className="list-container">
@@ -94,7 +122,7 @@ export default function ProductListPage() {
         </div>
       </div>
 
-      <Card className="card-container" data={products} />
+      <Card className="card-container" data={data} />
     </div>
   );
 }
