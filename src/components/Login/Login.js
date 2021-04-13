@@ -21,16 +21,18 @@ export default function Login(props) {
         });
       })
       .then(() => {
-        props.history.push(ROUTES.HOME);
+        // props.history.push(ROUTES.HOME);
       })
       .catch((error) => {
         setErrorMessage(error.message);
-        alert(errorMessage);
+        // alert(errorMessage);
       });
   };
 
   return (
+    
     <div className="outer">
+      {errorMessage && <p>{errorMessage}</p>}
       <img src={AppLogo} alt="" />
       Welcome to Style Beast
       <div className="inner" onClick={handleGoogleSignIn}>

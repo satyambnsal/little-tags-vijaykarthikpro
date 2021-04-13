@@ -1,21 +1,32 @@
-/* import React, { useContext, useEffect } from 'react';
-import FirebaseContext from '../Firebase/context'
+import React, { useEffect, useContext } from 'react';
+import { connect } from 'react-redux';
+import { setAuthUser } from '../../actions';
+import FirebaseContext from '../Firebase/context';
 
-const withAuthentication = (Component) =>{
-    const newComponent = (props) =>{
-        const firebase = useContext(FirebaseContext);
+const withAuthentication = (Component) => {
+  const NewComponent = (props) => {
+    const firebase = useContext(FirebaseContext);
+    const saveToLocalStorage = (authUser) => {
+      localStorage.setItem('authUser', JSON.stringify(authUser));
+    };
+    const next = (authUser) => {
+      saveToLocalStorage(authUser);
+      props.setAuthUser(authUser);
+    };
+    const fallback = () => {
+      localStorage.removeItem('authUser');
+      props.setAuthUser(null);
+    };
+    useEffect(() => {
+      const user = JSON.parse(localStorage.getItem('authUser'));
+      props.setAuthUser(user);
+      firebase.onAuthChangeListener(next, fallback);
+    }, []);
 
-        const saveToLocalStorage = (authUser) =>{
-            localStorage.setItem('authUser', JSON.stringify(authUser));
-        }
-        useEffect(()=>{
-            firebase.onAuthChangeListener(saveToLocalStorage);
-        },[]);
+    return <Component {...props} />;
+  };
 
-        return <Component {...props} />
-    }
+  return connect(null, { setAuthUser })(NewComponent);
+};
 
-    return newComponent;
-}
-
-export default withAuthentication; */
+export default withAuthentication;
