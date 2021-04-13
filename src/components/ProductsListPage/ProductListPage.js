@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React /* useState */ from "react";
 import products from "../../data/products";
 import "./ProductListPage.scss";
 import Card from "../Card/Card";
 
 export default function ProductListPage() {
-  const [data, setData] = useState(products);
+  // const [data, setData] = useState(products);
 
   return (
     <div className="list-container">
@@ -94,7 +94,7 @@ export default function ProductListPage() {
         </div>
       </div>
 
-      <Card className="card-container" data={data} />
+      <Card className="card-container" data={products} />
     </div>
   );
 }
