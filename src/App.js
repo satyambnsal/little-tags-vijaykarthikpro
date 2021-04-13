@@ -7,7 +7,7 @@ import * as ROUTES from "./constants/routes";
 // import AccountPage from "./components/AccountPage/AccountPage";
 import Login from "./components/Login/Login";
 import ProductsListPage from "./components/ProductsListPage/ProductListPage";
-import ProductDetailsPage from "./components/ProductDetailsPage/ProductDetailsPage"
+import ProductDetailsPage from "./components/ProductDetailsPage/ProductDetailsPage";
 
 function App() {
   return (
@@ -16,6 +16,9 @@ function App() {
         <Header />
         <Switch>
           <Route exact path={ROUTES.LANDING}>
+            <HomePage />
+          </Route>
+          <Route path={ROUTES.HOME}>
             <HomePage />
           </Route>
           <Route path={ROUTES.ACCOUNT}>

@@ -5,8 +5,10 @@
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  margin: 100px 400px 100px 400px;
+  margin: 0 auto;
   font-size: 20px;
+  width: 400px;
+  padding: 40px;
 
   .inner {
     display: flex;
