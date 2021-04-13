@@ -5,7 +5,7 @@ import Utils from "../../Utils";
 import CartIcon from "../../assets/icons/cart-filled.svg";
 import WishlistIcon from "../../assets/icons/wishlist-filled.svg";
 // import Carousel from '../carousel/Carousel'
-import SimilarProducts from "../SimilarProducts/SimilarProducts";
+// import SimilarProducts from "../SimilarProducts/SimilarProducts";
 
 export default function ProductDetailsPage() {
   // const [size, setSize] = useState()

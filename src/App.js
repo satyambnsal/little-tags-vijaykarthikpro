@@ -12,6 +12,8 @@ import ProductDetailsPage from "./components/ProductDetailsPage/ProductDetailsPa
 function App() {
   return (
     <div className="App">
+      <div className="content-wrapper">
+      
       <Router>
         <Header />
         <Switch>
@@ -31,9 +33,10 @@ function App() {
             <ProductDetailsPage />
           </Route>
         </Switch>
-
-        <Footer />
       </Router>
+      </div>
+
+      <Footer />
     </div>
   );
 }
