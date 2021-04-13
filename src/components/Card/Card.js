@@ -29,27 +29,27 @@ export default function Card(props) {
   const displayProducts = () => {
     return props.data.map((item) => {
       return (
-        <Link key={item.id} to={`/product-details/${item.id}`}>
-          <div className="card card-link" key={item.id}>
+        <div className="card" key={item.id}>
+          <Link key={item.id} to={`/product-details/${item.id}`}>
             <div className="card-img">
               <img src={item.image} alt="" />
             </div>
-            <div className="card-header">
-              {displayTitleText(item.title)}
-              <p className="price">
-                <span>&#8377;</span>
-                <span className="price-text">{item.price}</span>
-              </p>
-              <button
-                className="wishlist-btn"
-                onClick={() => setWishlist(!isWishlist)}
-              >
-                {wishlistIcon()}
-                <span className="wishlist-btn-text">Add to Wishlist</span>
-              </button>
-            </div>
+          </Link>
+          <div className="card-header">
+            {displayTitleText(item.title)}
+            <p className="price">
+              <span>&#8377;</span>
+              <span className="price-text">{item.price}</span>
+            </p>
+            <button
+              className="wishlist-btn"
+              onClick={() => setWishlist(!isWishlist)}
+            >
+              {wishlistIcon()}
+              <span className="wishlist-btn-text">Add to Wishlist</span>
+            </button>
           </div>
-        </Link>
+        </div>
       );
     });
   };

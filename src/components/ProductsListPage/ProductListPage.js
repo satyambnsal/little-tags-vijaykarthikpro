@@ -1,4 +1,4 @@
-import React, { /* useState */ } from "react";
+import React /* useState */ from "react";
 import products from "../../data/products";
 import "./ProductListPage.scss";
 import Card from "../Card/Card";
@@ -94,7 +94,7 @@ export default function ProductListPage() {
         </div>
       </div>
 
-      <Card className="card-container nav-links" data={products} />
+      <Card className="card-container" data={products} />
     </div>
   );
 }
