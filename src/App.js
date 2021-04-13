@@ -20,6 +20,9 @@ function App() {
           <Route exact path={ROUTES.LANDING}>
             <HomePage />
           </Route>
+          <Route path={ROUTES.HOME}>
+            <HomePage />
+          </Route>
           <Route path={ROUTES.ACCOUNT}>
             <Login />
           </Route>
