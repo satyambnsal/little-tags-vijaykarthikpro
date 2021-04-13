@@ -1,0 +1,69 @@
+@use './Dropdown/Dropdown.scss' as dropdown;
+
+.navbar {
+  background: black;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  font-size: 20px;
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+
+    .menu-item {
+      &:hover {
+        .dropdown-menu {
+          visibility: visible;
+        }
+      }
+    }
+  }
+  .title {
+    font-family: "Gloria Hallelujah";
+    font-size: 30px;
+    padding: 0px 20px 0 20px;
+  }
+  .nav-links {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1.2rem;
+  }
+  input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    outline: none;
+    border-radius: 20px;
+  }
+}
+
+.dropdown-menu {
+  visibility: hidden;
+  width: 110px;
+  position: absolute;
+  list-style: none;
+  text-align: start;
+  padding: 10px;
+  border-radius: 10px;
+  background: white;
+
+  li {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+  }
+
+  .dropdown-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      font-weight: 600;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.footer {
+  width: 100%;
+  padding: 40px 40px 0 40px;
+  font-size: 15px;
+  .ft-logo {
+    display: flex;
+    flex-wrap: wrap;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .ft-address {
+      padding: 0 0 0 20px;
+      .top {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0 15px 0;
+
+  .ft-links {
+    span {
+      padding: 0 20px 0 0;
+    }
+  }
+}
