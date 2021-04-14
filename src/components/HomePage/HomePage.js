@@ -47,7 +47,7 @@ export default function HomePage() {
               <h2>Jackets</h2>
             </div>
           </Link>
-          <Link to="/products/t-shirts" className="nav-links">
+          <Link to="/products/tshirts" className="nav-links">
             <div>
               <img src={TshirtsImg} alt="img" />
               <h2>T-shirts</h2>

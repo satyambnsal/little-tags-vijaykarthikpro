@@ -17,7 +17,9 @@ export default function ProductListPage() {
       men : 'men clothing',
       women : 'women clothing',
       electronics : 'electronics',
-      jewellery : 'jewelery'
+      jewellery : 'jewelery',
+      tshirts: 'tshirt',
+      jackets: 'jacket'
     }
 
     const isPathMatching = (path) => {

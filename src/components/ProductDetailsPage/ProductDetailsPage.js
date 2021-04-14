@@ -22,7 +22,6 @@ export default function ProductDetailsPage() {
 
   useEffect(()=>{
     Products.filter((product) =>{
-      // console.log("product from products: ",product);
       if(product.id.toString() === id) {
         console.log("product: ",product);
         setProduct(product);
@@ -61,7 +60,7 @@ export default function ProductDetailsPage() {
         </div>
         <div className="description">
           <h2 className="title">{product.title ? product.title : 'Jacket'}</h2>
-          <h3>Price: ${product.price}</h3>
+          <h3>Price : <span className="price-text">$</span><span className="price-text">{product.price}</span></h3>
           <p className="description-text">
             {product.description}
           </p>
