@@ -9,6 +9,7 @@ import JacketsImg from "../../assets/images/jackets.svg";
 import TshirtsImg from "../../assets/images/tshirts.svg";
 import ElectronicsImg from "../../assets/images/electronics.svg";
 import JeweleryImg from "../../assets/images/jewelery.svg";
+
 export default function HomePage() {
   return (
     <div className="home-container">
@@ -46,7 +47,7 @@ export default function HomePage() {
               <h2>Jackets</h2>
             </div>
           </Link>
-          <Link to="/products/t-shirts" className="nav-links">
+          <Link to="/products/tshirts" className="nav-links">
             <div>
               <img src={TshirtsImg} alt="img" />
               <h2>T-shirts</h2>
