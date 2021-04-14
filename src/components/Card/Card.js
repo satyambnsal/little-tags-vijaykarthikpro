@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { /* useState */ } from "react";
 import "./Card.scss";
 import { Link, Switch, Route } from "react-router-dom";
-import WishlistIcon from "../../assets/icons/wishlist-black-border.svg";
-import WishlistFilledIcon from "../../assets/icons/wishlist-filled-black-img.svg";
+// import WishlistIcon from "../../assets/icons/wishlist-black-border.svg";
+// import WishlistFilledIcon from "../../assets/icons/wishlist-filled-black-img.svg";
 import ProductDetailsPage from "../ProductDetailsPage/ProductDetailsPage";
 
 export default function Card(props) {
-  const [isWishlist, setWishlist] = useState(false);
+/*   const [isWishlist, setWishlist] = useState(false);
 
   const wishlistIcon = () => {
     if (isWishlist) {
@@ -14,7 +14,7 @@ export default function Card(props) {
     } else {
       return <img src={WishlistIcon} alt="" />;
     }
-  };
+  }; */
 
   const displayTitleText = (title) => {
     const words = title.split(" ");
@@ -38,16 +38,16 @@ export default function Card(props) {
           <div className="card-header">
             {displayTitleText(item.title)}
             <p className="price">
-              <span>&#8377;</span>
+              <span>$</span>
               <span className="price-text">{item.price}</span>
             </p>
-            <button
+            {/* <button
               className="wishlist-btn"
               onClick={() => setWishlist(!isWishlist)}
             >
               {wishlistIcon()}
               <span className="wishlist-btn-text">Add to Wishlist</span>
-            </button>
+            </button> */}
           </div>
         </div>
       );
