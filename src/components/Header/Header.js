@@ -62,7 +62,8 @@ export default function Header() {
           <Link to="/" className="nav-links">
             <img src={WishlistIcon} alt="" />
           </Link>
-          <Link to="/account" className="nav-links">
+
+          <Link to="/checkout" className="nav-links">
             <img src={CartIcon} alt="" />
           </Link>
         </div>
