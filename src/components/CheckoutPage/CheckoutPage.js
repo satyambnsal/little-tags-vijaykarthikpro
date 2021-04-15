@@ -4,8 +4,8 @@ import MenProtrait from '../../assets/images/men-portrait.svg'
 
 export default function CheckoutPage() {
   const [quantityCount, setQuantityCount] = useState(1);
-  const [totalItems, setTotalItems] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(2000);
+  const [totalItems/* , setTotalItems */] = useState(0);
+  const [totalPrice/* , setTotalPrice */] = useState(2000);
 
  /*  const removeItems = ()=>{
     setTotalItems(totalItems - 1);
