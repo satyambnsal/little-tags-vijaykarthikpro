@@ -13,7 +13,7 @@ const withAuthorization = (Component) => {
         props.history.push(ROUTES.HOME);
       }
     };
-    const fallback = () => props.history.push(ROUTES.HOME);
+    const fallback = () => /* props.history.push(ROUTES.HOME) */{};
     useEffect(() => {
       firebase.onAuthChangeListener(next, fallback);
     });
@@ -22,6 +22,7 @@ const withAuthorization = (Component) => {
       <Component {...props} />
     ) : (
       <p>You need to sign in to access this page </p>
+      
     );
   };
 

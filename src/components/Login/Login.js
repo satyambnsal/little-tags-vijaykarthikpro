@@ -4,24 +4,37 @@ import FbIcon from "../../assets/icons/fb-logo.svg";
 import GoogleIcon from "../../assets/icons/google-logo.svg";
 import FirebaseContext from "../Firebase/context";
 import CrossIcon from "../../assets/icons/clear.svg";
+import { saveToLocalStorage } from '../../Utils';
+import { setAuthUser } from "../../actions";
 import "./Login.scss";
 
 export default function Login({ showLogin, handleModalOpen }) {
   const firebase = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState("");
 
+  console.log("showLogin: ",showLogin);
+
   const handleGoogleSignIn = () => {
     firebase
       .doGoogleSignIn()
       .then((authUser) => {
+
+        const userDetails = {
+          email: authUser.email, 
+          name: authUser.displayName, 
+          emailVerified: authUser.emailVerified  
+        }
+       
+        saveToLocalStorage('authUser',userDetails);
+        setAuthUser(userDetails);
+
+        handleModalOpen();
+
         return firebase.user(authUser.user.uid).set({
           email: authUser.user.email,
-          username: authUser.user.displayName,
+          displayName: authUser.user.displayName,
           roles: {},
         });
-      })
-      .then(() => {
-        // props.history.push(ROUTES.HOME);
       })
       .catch((error) => {
         setErrorMessage(error.message);

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import './CheckoutPage.scss';
 import MenProtrait from '../../assets/images/men-portrait.svg'
+import withAuthorization from '../Session/withAuthorization';
 
-export default function CheckoutPage() {
+function CheckoutPage() {
   const [quantityCount, setQuantityCount] = useState(1);
   const [totalItems/* , setTotalItems */] = useState(0);
   const [totalPrice/* , setTotalPrice */] = useState(2000);
@@ -80,3 +81,5 @@ export default function CheckoutPage() {
     </div>
   </div>);
 }
+
+export default withAuthorization(CheckoutPage);

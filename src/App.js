@@ -9,6 +9,7 @@ import Login from "./components/Login/Login";
 import ProductsListPage from "./components/ProductsListPage/ProductListPage";
 import ProductDetailsPage from "./components/ProductDetailsPage/ProductDetailsPage";
 import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
+import withAuthentication from './components/Session/withAuthentication';
 
 function App() {
   return (
@@ -46,4 +47,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthentication(App);

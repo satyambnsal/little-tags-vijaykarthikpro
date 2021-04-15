@@ -9,9 +9,8 @@ import JacketsImg from "../../assets/images/jackets.svg";
 import TshirtsImg from "../../assets/images/tshirts.svg";
 import ElectronicsImg from "../../assets/images/electronics.svg";
 import JeweleryImg from "../../assets/images/jewelery.svg";
-import withAuthorization from "../Session/withAuthorization";
 
-function HomePage() {
+export default function HomePage() {
   return (
     <div className="home-container">
       <div className="banner-section">
@@ -72,4 +71,3 @@ function HomePage() {
   );
 }
 
-export default withAuthorization(HomePage);

@@ -2,19 +2,24 @@ import React, { useEffect, useContext } from "react";
 import { connect } from "react-redux";
 import { setAuthUser } from "../../actions";
 import FirebaseContext from "../Firebase/context";
+import {saveToLocalStorage, removeFromLocalStorage} from '../../Utils';
 
 const withAuthentication = (Component) => {
   const NewComponent = (props) => {
     const firebase = useContext(FirebaseContext);
-    const saveToLocalStorage = (authUser) => {
-      localStorage.setItem("authUser", JSON.stringify(authUser));
-    };
+    
     const next = (authUser) => {
-      saveToLocalStorage(authUser);
-      props.setAuthUser(authUser);
+      const userDetails = {
+        email: authUser.email, 
+        name: authUser.displayName, 
+        emailVerified: authUser.emailVerified  
+      }
+      saveToLocalStorage('authUser',userDetails);
+      props.setAuthUser(userDetails);
     };
+
     const fallback = () => {
-      localStorage.removeItem("authUser");
+      removeFromLocalStorage('authUser')
       props.setAuthUser(null);
     };
     useEffect(() => {
