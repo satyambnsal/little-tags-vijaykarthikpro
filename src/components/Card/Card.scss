@@ -7,16 +7,17 @@
   margin: 0 auto;
 
   .card {
-    margin: 0 auto;
+
     margin-bottom: 60px;
+    margin-right: 20px;
     transform: scale(1);
     transition: 0.2s;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       transition: 0.2s;
+      
       .wishlist-btn {
-        // display: block;
         visibility: visible;
       }
     }

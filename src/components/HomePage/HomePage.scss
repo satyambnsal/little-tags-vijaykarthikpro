@@ -50,13 +50,13 @@
         transition: 0.2s;
 
         &:hover {
-          transform: scale(1.1);
+          transform: scale(1.05);
           transition: 0.2s;
           filter: drop-shadow(-30px 10px 10px black);
         }
 
         &:active {
-          transform: scale(1.08);
+          transform: scale(1.02);
           filter: drop-shadow(-30px 10px 10px black);
         }
       }
@@ -66,13 +66,13 @@
         transition: 0.15s;
 
         &:hover {
-          transform: scale(1.1);
+          transform: scale(1.05);
           transition: 0.15s;
           filter: drop-shadow(30px 10px 10px black);
         }
 
         &:active {
-          transform: scale(1.08);
+          transform: scale(1.02);
           filter: drop-shadow(30px 10px 10px black);
         }
       }
@@ -116,13 +116,13 @@
         transition: 0.15s;
 
         &:hover {
-          transform: scale(1.1);
+          transform: scale(1.05);
           transition: 0.15s;
           filter: drop-shadow(20px 10px 10px black);
         }
 
         &:active {
-          transform: scale(1.08);
+          transform: scale(1.02);
           filter: drop-shadow(20px 10px 10px black);
         }
       }
