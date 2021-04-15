@@ -14,30 +14,29 @@ function App() {
   return (
     <div className="App">
       <div className="content-wrapper">
-      
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path={ROUTES.LANDING}>
-            <HomePage />
-          </Route>
-          <Route path={ROUTES.ACCOUNT}>
-            <Login />
-          </Route>
-          <Route path={ROUTES.OFFERS}>
-            <ProductsListPage />
-          </Route>
-          <Route path={ROUTES.PRODUCT}>
-            <ProductsListPage />
-          </Route>
-          <Route path={ROUTES.PRODUCT_DETAILS}>
-            <ProductDetailsPage />
-          </Route>
-          <Route path={ROUTES.CHECKOUT}>
-            <CheckoutPage />
-          </Route>
-        </Switch>
-      </Router>
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path={ROUTES.LANDING}>
+              <HomePage />
+            </Route>
+            <Route path={ROUTES.ACCOUNT}>
+              <Login />
+            </Route>
+            <Route path={ROUTES.OFFERS}>
+              <ProductsListPage />
+            </Route>
+            <Route path={ROUTES.PRODUCT}>
+              <ProductsListPage />
+            </Route>
+            <Route path={ROUTES.PRODUCT_DETAILS}>
+              <ProductDetailsPage />
+            </Route>
+            <Route path={ROUTES.CHECKOUT}>
+              <CheckoutPage />
+            </Route>
+          </Switch>
+        </Router>
       </div>
 
       <Footer />
