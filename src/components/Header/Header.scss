@@ -8,10 +8,43 @@
   justify-content: space-between;
   padding: 40px;
   font-size: 20px;
+
   .left,
   .right {
     display: flex;
     align-items: center;
+
+    .search-bar {
+      display: flex;
+      margin-right: 10px;
+      align-items: center;
+      border-radius: 20px;
+      background-color: white;
+
+      input[type="text"] {
+        width: 200px;
+        padding: 10px;
+        outline: none;
+        padding-left: 10px;
+        border-radius: 20px;
+        border: 0;
+      }
+      .search-icon {
+        width: 16px;
+        height: 16px;
+        margin: 0 8px 0 8px;
+      }
+    }
+
+    button {
+      background-color: white;
+      color: black;
+      font-weight: 200;
+      padding: 10px 20px 10px 20px;
+      border-radius: 20px;
+      outline: none;
+      border: 0px;
+    }
 
     .menu-item {
       &:hover {
@@ -21,21 +54,17 @@
       }
     }
   }
+
   .title {
     font-family: "Gloria Hallelujah";
     font-size: 30px;
     padding: 0px 20px 0 20px;
   }
+
   .nav-links {
     color: white;
     text-decoration: none;
     padding: 0.5rem 1.2rem;
-  }
-  input[type="text"] {
-    width: 200px;
-    padding: 10px;
-    outline: none;
-    border-radius: 20px;
   }
 }
 
