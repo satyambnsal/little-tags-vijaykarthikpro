@@ -1,3 +1,5 @@
+@use '../../../library';
+
 .navbar {
   background: black;
   height: 80px;
@@ -46,12 +48,15 @@
     }
 
     .menu-item {
+
       &:hover {
         .dropdown-menu {
           visibility: visible;
         }
       }
+
     }
+
   }
 
   .title {
@@ -64,16 +69,16 @@
     color: white;
     text-decoration: none;
     padding: 0.5rem 1.2rem;
+    @include library.flex-row-center;
+
   }
 }
 
 .dropdown-menu {
   visibility: hidden;
-  width: 110px;
   position: absolute;
   list-style: none;
   text-align: start;
-  padding: 10px;
   border-radius: 10px;
   background: white;
   z-index: 2;
@@ -96,4 +101,28 @@
       font-weight: 600;
     }
   }
+
+  .profile-menu {
+    @include library.flex-row-center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: black;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    font-size: 16px;
+    border: 1px white solid;
+    border-radius: 10px 10px 0 0;
+
+    .username {
+     margin-left: 5px;
+     text-transform: capitalize;
+    }
+
+  }
+
+  .item-padding {
+    padding: 10px;
+  }
+ 
 }

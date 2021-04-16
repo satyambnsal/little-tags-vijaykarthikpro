@@ -24,6 +24,7 @@ const withAuthentication = (Component) => {
     };
     useEffect(() => {
       const user = JSON.parse(getFromLocalStorage('authUser'));
+      console.log("user from withAuthentication local storage:",user);
       props.setAuthUser(user);
       firebase.onAuthChangeListener(next, fallback);
     });
