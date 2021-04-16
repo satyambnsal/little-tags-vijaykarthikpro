@@ -7,14 +7,14 @@ export const SIZES = {
 }
 
 export const saveToLocalStorage = (key,value) => {
-    localStorage.setItem(key, JSON.stringify(value));
+    return localStorage.setItem(key, JSON.stringify(value));
 };
 
 export const getFromLocalStorage = (key) => {
-    localStorage.getItem(key);
+    return localStorage.getItem(key);
 }
 
 export const removeFromLocalStorage = (key) => {
-    localStorage.removeItem(key);
+    return localStorage.removeItem(key);
 }
 

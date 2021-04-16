@@ -27,7 +27,6 @@ class Firebase {
     onAuthChangeListener = (next, fallback = () => {}) =>{
         return this.auth.onAuthStateChanged(authUser =>{
             if(authUser) {
-                console.log(`authUser: listener: ${authUser}`);
                 next(authUser);
             } else {
                 fallback();

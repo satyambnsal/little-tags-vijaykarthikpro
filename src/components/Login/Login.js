@@ -12,8 +12,6 @@ export default function Login({ showLogin, handleModalOpen }) {
   const firebase = useContext(FirebaseContext);
   const [errorMessage, setErrorMessage] = useState("");
 
-  console.log("showLogin: ",showLogin);
-
   const handleGoogleSignIn = () => {
     firebase
       .doGoogleSignIn()
@@ -38,7 +36,6 @@ export default function Login({ showLogin, handleModalOpen }) {
       })
       .catch((error) => {
         setErrorMessage(error.message);
-        // alert(errorMessage);
       });
   };
 

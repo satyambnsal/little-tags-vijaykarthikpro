@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown/Dropdown";
@@ -10,16 +10,15 @@ import CartIcon from "../../assets/icons/cart.svg";
 import GlobeIcon from "../../assets/icons/globe.svg";
 import WishlistIcon from "../../assets/icons/wishlist.svg";
 import ProfileIcon from "../../assets/icons/person.svg";
-import { getFromLocalStorage } from '../../Utils';
 
-function Header({ user }) {
+
+export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
-  const [isUserLoggedIn/* , setUserLoggedIn */] = useState(getFromLocalStorage('authUser') ? true: false)
+  const isUserLoggedIn = useSelector(state => state.sessionState.isUserLoggedIn);
 
   const showLoginModal = () => setShowLogin(!showLogin);
 
   const renderProfileIcon = () =>{
-    // const isUserLoggedIn = user.isUserLoggedIn ? true : false;
     if(isUserLoggedIn) {
       return ( <div className="menu-item">
         <Link to="/account" className="nav-links">
@@ -82,10 +81,3 @@ function Header({ user }) {
     </div>
   );
 }
-
-
-const mapStateToProps = (state) =>({
-  user: state.isUserLoggedIn
-});
-
-export default connect(mapStateToProps)(Header);

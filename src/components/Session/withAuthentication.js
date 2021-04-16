@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { connect } from "react-redux";
 import { setAuthUser } from "../../actions";
 import FirebaseContext from "../Firebase/context";
-import {saveToLocalStorage, removeFromLocalStorage} from '../../Utils';
+import { saveToLocalStorage, removeFromLocalStorage, getFromLocalStorage } from '../../Utils';
 
 const withAuthentication = (Component) => {
   const NewComponent = (props) => {
@@ -23,10 +23,10 @@ const withAuthentication = (Component) => {
       props.setAuthUser(null);
     };
     useEffect(() => {
-      const user = JSON.parse(localStorage.getItem("authUser"));
+      const user = JSON.parse(getFromLocalStorage('authUser'));
       props.setAuthUser(user);
       firebase.onAuthChangeListener(next, fallback);
-    }, []);
+    });
 
     return <Component {...props} />;
   };
