@@ -19,7 +19,6 @@ export default function Header() {
   const showLoginModal = () => setShowLogin(!showLogin);
 
   const renderProfileIcon = () =>{
-    console.log("isUserLoggedIn:",isUserLoggedIn);
     if(isUserLoggedIn) {
       return ( <div className="menu-item">
         <Link to="/account" className="nav-links">

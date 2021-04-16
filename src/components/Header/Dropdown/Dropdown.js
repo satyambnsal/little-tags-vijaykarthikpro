@@ -1,6 +1,6 @@
 import React, { useEffect, useState, /* useContext */ } from "react";
-/* import { useDispatch } from 'react-redux';
-import { removeAuthUser } from '../../../actions'; */
+import { useSelector } from 'react-redux';
+// import { removeAuthUser } from '../../../actions';
 import { ProfileItems } from "./MenuItems";
 import { LanguageItems } from "./MenuItems";
 import { Link } from "react-router-dom";
@@ -12,6 +12,8 @@ import '../Header.scss'
 export default function Dropdown({ type }) {
   const [click, setClick] = useState(false);
   const [menuItems, setMenuItems] = useState([]);
+  const user = useSelector(state => state.sessionState.authUser);
+
 /*   const dispatch = useDispatch();
   const firebase = useContext(FirebaseContext); */
 
@@ -21,7 +23,7 @@ export default function Dropdown({ type }) {
     } else if (type === "language") {
       setMenuItems(LanguageItems);
     }
-  },[type]);
+  },[type, user]);
 
   /* const handleClick = (item) => {
     console.log("item in handleClick:",item);
@@ -45,8 +47,8 @@ export default function Dropdown({ type }) {
   }; */
   
   const displayDropDownList = () =>{
-
-    return menuItems.map((item, index) =>{
+    if(type === "profile") {
+      const userMenu = menuItems.map((item, index) =>{
         return (<li key={index}>
               <Link
                 className="dropdown-link"
@@ -56,7 +58,36 @@ export default function Dropdown({ type }) {
                 {item.title}
               </Link>
         </li>)
-    })
+        });
+
+        return (<div >
+          <div className="profile-menu">
+            <span className="hello">Hello </span>
+            <span className="username">{user.name.split(' ')[0]}</span>
+          </div>
+          <div className="item-padding">
+            {userMenu}
+          </div>
+         
+        </div>)
+    } else {
+      const languageMenu =  menuItems.map((item, index) =>{
+        return (<li key={index}>
+              <Link
+                className="dropdown-link"
+                to={item.path}
+                onClick={()=>setClick(!click)}
+              >
+                {item.title}
+              </Link>
+        </li>)
+        })
+
+      return (<div className="item-padding">
+        {languageMenu}
+      </div>)
+    }
+
   }
 
 
