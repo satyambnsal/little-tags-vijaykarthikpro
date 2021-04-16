@@ -9,7 +9,7 @@ export const ProfileItems = [
   },
   {
     title: "Log Out",
-    path: "/logout",
+    path: "/",
   },
 ];
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from 'react-router-dom';
 import "./ProductDetailsPage.scss";
 import ProductDetailsImg from "../../assets/images/product-details-img.svg";
-import Utils from "../../Utils";
+import { SIZES } from "../../Utils";
 import CartIcon from "../../assets/icons/cart-filled.svg";
 import WishlistIcon from "../../assets/icons/wishlist-filled.svg";
 import Products from '../../data/products';
@@ -33,7 +33,7 @@ export default function ProductDetailsPage() {
   
 
   const displaySizes = () => {
-    const sizesList = Object.values(Utils.SIZES);
+    const sizesList = Object.values(SIZES);
     return sizesList.map((size, id) => {
       return (
         <span key={id} className="size">

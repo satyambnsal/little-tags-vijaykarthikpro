@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from 'react-redux';
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown/Dropdown";
@@ -10,12 +11,28 @@ import GlobeIcon from "../../assets/icons/globe.svg";
 import WishlistIcon from "../../assets/icons/wishlist.svg";
 import ProfileIcon from "../../assets/icons/person.svg";
 
+
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
+  const isUserLoggedIn = useSelector(state => state.sessionState.isUserLoggedIn);
 
-  const showLoginModal = () => {
-    setShowLogin((prev) => !prev);
-  };
+  const showLoginModal = () => setShowLogin(!showLogin);
+
+  const renderProfileIcon = () =>{
+    if(isUserLoggedIn) {
+      return ( <div className="menu-item">
+        <Link to="/account" className="nav-links">
+          <img src={ProfileIcon} alt="" />
+        </Link>
+        <Dropdown type="profile" />
+    </div>)
+    } else {
+      return (<div>
+        <button onClick={showLoginModal}>LOGIN</button>
+      </div>)
+    }
+  }
+
 
   return (
     <div>
@@ -44,21 +61,13 @@ export default function Header() {
             <input type="text" placeholder="Search items..." />
             <img className="search-icon" src={SearchIcon} alt="search-icon" />
           </div>
-          <div>
-            <button onClick={showLoginModal}>LOGIN</button>
-          </div>
           <div className="menu-item">
             <Link to="/" className="nav-links">
               <img src={GlobeIcon} alt="" />
             </Link>
             <Dropdown type="language" />
           </div>
-          <div className="menu-item">
-            <Link to="/account" className="nav-links">
-              <img src={ProfileIcon} alt="" />
-            </Link>
-            <Dropdown type="profile" />
-          </div>
+          {renderProfileIcon()}
           <Link to="/" className="nav-links">
             <img src={WishlistIcon} alt="" />
           </Link>

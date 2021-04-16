@@ -1,5 +1,3 @@
-@use './Dropdown/Dropdown.scss' as dropdown;
-
 .navbar {
   background: black;
   height: 80px;
@@ -44,6 +42,7 @@
       border-radius: 20px;
       outline: none;
       border: 0px;
+      cursor: pointer;
     }
 
     .menu-item {
@@ -77,6 +76,8 @@
   padding: 10px;
   border-radius: 10px;
   background: white;
+  z-index: 2;
+  filter: drop-shadow(1px 1px 1px black);
 
   li {
     cursor: pointer;
