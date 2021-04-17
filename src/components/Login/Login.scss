@@ -81,6 +81,7 @@
           background-color: white;
           border: 1px darkgray solid;
           justify-content: flex-start;
+          outline: none;
 
           .google-img {
             width: 30x;
@@ -97,6 +98,7 @@
           border-radius: 20px;
           background-color: white;
           border: 1px darkgray solid;
+          outline: none;
 
           .fb-img {
             width: 30x;
@@ -105,6 +107,10 @@
           }
         }
       }
+    }
+
+    .login-error {
+      padding: 10px;
     }
   }
 }

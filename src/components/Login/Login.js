@@ -64,6 +64,11 @@ export default function Login({ showLogin, handleModalOpen }) {
       });
   };
 
+  const handleModalClose = () => {
+    handleModalOpen();
+    setErrorMessage("");
+  };
+
   return (
     <>
       {showLogin ? (
@@ -77,7 +82,7 @@ export default function Login({ showLogin, handleModalOpen }) {
               <img
                 src={CrossIcon}
                 alt="cancel-icon"
-                onClick={handleModalOpen}
+                onClick={handleModalClose}
                 className="close-modal"
               />
             </div>
@@ -104,7 +109,7 @@ export default function Login({ showLogin, handleModalOpen }) {
               </div>
             ) : (
               <div className="box">
-                <p>{errorMessage}</p>
+                <p className="login-error">{errorMessage}</p>
               </div>
             )}
           </div>
