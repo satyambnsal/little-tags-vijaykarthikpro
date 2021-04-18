@@ -7,10 +7,6 @@ export const ProfileItems = [
     title: "Orders",
     path: "/orders",
   },
-  {
-    title: "Log Out",
-    path: "/",
-  },
 ];
 
 export const LanguageItems = [
