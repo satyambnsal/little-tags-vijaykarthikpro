@@ -122,5 +122,17 @@
   .item-padding {
     padding: 10px;
   }
+
+  .logout {
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+
+    &:hover {
+      font-weight: 600;
+    }
+  }
  
 }

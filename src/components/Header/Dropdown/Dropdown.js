@@ -1,11 +1,9 @@
-import React, { useEffect, useState, /* useContext */ } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useSelector } from 'react-redux';
-// import { removeAuthUser } from '../../../actions';
 import { ProfileItems } from "./MenuItems";
 import { LanguageItems } from "./MenuItems";
 import { Link } from "react-router-dom";
-/* import FirebaseContext from "../../Firebase/firebase";
-import { removeFromLocalStorage } from '../../../Utils'; */
+import FirebaseContext from "../../Firebase/context";
 import '../Header.scss'
 
 
@@ -14,8 +12,7 @@ export default function Dropdown({ type }) {
   const [menuItems, setMenuItems] = useState([]);
   const user = useSelector(state => state.sessionState.authUser);
 
-/*   const dispatch = useDispatch();
-  const firebase = useContext(FirebaseContext); */
+  const firebase = useContext(FirebaseContext);
 
   useEffect(()=>{
     if (type === "profile") {
@@ -25,26 +22,9 @@ export default function Dropdown({ type }) {
     }
   },[type, user]);
 
-  /* const handleClick = (item) => {
-    console.log("item in handleClick:",item);
-    if(item === "logout") {
-
-      // alert("Are you sure you want to logout?");
-
-      firebase.doSignOut().then((response)=>{
-
-        console.log(response);
-        removeFromLocalStorage('authUser');
-        dispatch(removeAuthUser());
-
-      }).catch(error=>{
-        console.log(error);
-        alert(error);
-      })
-    } else {
-      setClick(!click);
-    }
-  }; */
+  const handleLogout = () => {
+      firebase.doSignOut();
+  };
   
   const displayDropDownList = () =>{
     if(type === "profile") {
@@ -67,8 +47,9 @@ export default function Dropdown({ type }) {
           </div>
           <div className="item-padding">
             {userMenu}
+            <div className="logout" onClick={handleLogout}>Logout</div>
           </div>
-         
+          
         </div>)
     } else {
       const languageMenu =  menuItems.map((item, index) =>{
