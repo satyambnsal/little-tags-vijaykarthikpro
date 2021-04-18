@@ -4,7 +4,7 @@ import FbIcon from "../../assets/icons/fb-logo.svg";
 import GoogleIcon from "../../assets/icons/google-logo.svg";
 import FirebaseContext from "../Firebase/context";
 import CrossIcon from "../../assets/icons/clear.svg";
-import { saveToLocalStorage } from '../../Utils';
+import { saveToLocalStorage } from "../../Utils";
 import { setAuthUser } from "../../actions";
 import "./Login.scss";
 
@@ -16,14 +16,39 @@ export default function Login({ showLogin, handleModalOpen }) {
     firebase
       .doGoogleSignIn()
       .then((authUser) => {
-
         const userDetails = {
-          email: authUser.email, 
-          name: authUser.displayName, 
-          emailVerified: authUser.emailVerified  
-        }
-       
-        saveToLocalStorage('authUser',userDetails);
+          email: authUser.email,
+          name: authUser.displayName,
+          emailVerified: authUser.emailVerified,
+        };
+
+        saveToLocalStorage("authUser", userDetails);
+        setAuthUser(userDetails);
+
+        handleModalOpen();
+
+        return firebase.user(authUser.user.uid).set({
+          email: authUser.user.email,
+          displayName: authUser.user.displayName,
+          roles: {},
+        });
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
+  const handleFacebookSignIn = () => {
+    firebase
+      .doFacebookSignIn()
+      .then((authUser) => {
+        console.log("Facebook auth", authUser);
+        const userDetails = {
+          email: authUser.email,
+          name: authUser.displayName,
+          emailVerified: authUser.emailVerified,
+        };
+
+        saveToLocalStorage("authUser", userDetails);
         setAuthUser(userDetails);
 
         handleModalOpen();
@@ -39,6 +64,11 @@ export default function Login({ showLogin, handleModalOpen }) {
       });
   };
 
+  const handleModalClose = () => {
+    handleModalOpen();
+    setErrorMessage("");
+  };
+
   return (
     <>
       {showLogin ? (
@@ -52,7 +82,7 @@ export default function Login({ showLogin, handleModalOpen }) {
               <img
                 src={CrossIcon}
                 alt="cancel-icon"
-                onClick={handleModalOpen}
+                onClick={handleModalClose}
                 className="close-modal"
               />
             </div>
@@ -68,7 +98,10 @@ export default function Login({ showLogin, handleModalOpen }) {
                     />
                     <span>Continue with Google</span>
                   </button>
-                  <button className="facebook-login">
+                  <button
+                    className="facebook-login"
+                    onClick={handleFacebookSignIn}
+                  >
                     <img src={FbIcon} alt="fb-icon" className="fb-img" />
                     <span>Continue with Facebook</span>
                   </button>
@@ -76,7 +109,7 @@ export default function Login({ showLogin, handleModalOpen }) {
               </div>
             ) : (
               <div className="box">
-                <p>{errorMessage}</p>
+                <p className="login-error">{errorMessage}</p>
               </div>
             )}
           </div>
