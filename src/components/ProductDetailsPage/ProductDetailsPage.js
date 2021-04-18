@@ -14,7 +14,6 @@ export default function ProductDetailsPage() {
   const [product, setProduct] = useState({});
   let location = useLocation();
   let id = location.pathname.split("/")[2];
-  console.log("id: ", id);
 
   useEffect(() => {
     Products.filter((product) => {
