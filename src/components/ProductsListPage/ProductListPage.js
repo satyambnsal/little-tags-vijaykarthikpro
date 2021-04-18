@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./ProductListPage.scss";
 import products from "../../data/products";
+import { routePathMap } from '../../Utils';
 import Card from "../Card/Card";
 
 export default function ProductListPage() {
@@ -11,14 +12,6 @@ export default function ProductListPage() {
   let pathName = location.pathname.split("/")[2];
 
   useEffect(() => {
-    const routePathMap = {
-      men: "men clothing",
-      women: "women clothing",
-      electronics: "electronics",
-      jewellery: "jewelery",
-      tshirts: "tshirt",
-      jackets: "jacket",
-    };
 
     const isPathMatching = (path) => {
       return Object.keys(routePathMap).includes(path);
