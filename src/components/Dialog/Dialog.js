@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import AppLogo from "../../assets/icons/logo-symbol.png";
 import CrossIcon from "../../assets/icons/clear.svg";
 
@@ -23,4 +24,14 @@ export default function Dialog( { handleModalClose, displayContent }) {
       </div>
     </div>
   );
+}
+
+Dialog.propTypes = {
+  handleModalClose : PropTypes.func.isRequired,
+  displayContent : PropTypes.func.isRequired
+}
+
+Dialog.defaultProps = {
+  handleModalClose : () => {},
+  displayContent: () => {} 
 }
