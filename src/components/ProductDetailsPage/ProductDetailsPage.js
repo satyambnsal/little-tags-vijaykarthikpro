@@ -1,36 +1,30 @@
-import React, { useState } from "react";
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { SIZES } from "../../Utils";
 import "./ProductDetailsPage.scss";
 import ProductDetailsImg from "../../assets/images/product-details-img.svg";
-import { SIZES } from "../../Utils";
 import CartIcon from "../../assets/icons/cart-filled.svg";
 import WishlistIcon from "../../assets/icons/wishlist-filled.svg";
-import Products from '../../data/products';
-import { useEffect } from "react";
+import Products from "../../data/products";
 // import Carousel from '../carousel/Carousel'
 // import SimilarProducts from "../SimilarProducts/SimilarProducts";
 
 export default function ProductDetailsPage() {
-  // const [size, setSize] = useState()
   const [quantityCount, setQuantityCount] = useState(1);
   const [product, setProduct] = useState({});
   let location = useLocation();
   let id = location.pathname.split("/")[2];
-  console.log("id: ",id);
+  console.log("id: ", id);
 
- 
-
-  useEffect(()=>{
-    Products.filter((product) =>{
-      if(product.id.toString() === id) {
-        console.log("product: ",product);
+  useEffect(() => {
+    Products.filter((product) => {
+      if (product.id.toString() === id) {
+        console.log("product: ", product);
         setProduct(product);
       }
       return null;
-    })
-    
-  },[id])
-  
+    });
+  }, [id]);
 
   const displaySizes = () => {
     const sizesList = Object.values(SIZES);
@@ -56,14 +50,18 @@ export default function ProductDetailsPage() {
     <div className="product-details-container">
       <div className="details">
         <div className="image-carousel">
-          <img src={product.image ? product.image : ProductDetailsImg} alt="" />
+          <img
+            src={product.image ? product.image : ProductDetailsImg}
+            alt="products"
+          />
         </div>
         <div className="description">
-          <h2 className="title">{product.title ? product.title : 'Jacket'}</h2>
-          <h3>Price : <span className="price-text">$</span><span className="price-text">{product.price}</span></h3>
-          <p className="description-text">
-            {product.description}
-          </p>
+          <h2 className="title">{product.title ? product.title : "Jacket"}</h2>
+          <h3>
+            Price : <span className="price-text">$</span>
+            <span className="price-text">{product.price}</span>
+          </h3>
+          <p className="description-text">{product.description}</p>
           <h3 className="size-title">Size</h3>
           <div className="sizes-list">{displaySizes()}</div>
           <h3 className="quantity-title">Quantity</h3>
@@ -78,11 +76,11 @@ export default function ProductDetailsPage() {
           </div>
           <div className="add-to-buttons">
             <button className="cart">
-              <img src={CartIcon} alt="" />
+              <img src={CartIcon} alt="cart-icon" />
               <span className="cart-btn-text">Add to Cart</span>
             </button>
             <button className="wishlist">
-              <img src={WishlistIcon} alt="" />
+              <img src={WishlistIcon} alt="wishlist-icon" />
               <span className="wishlist-btn-text">Add to Wishlist</span>
             </button>
           </div>

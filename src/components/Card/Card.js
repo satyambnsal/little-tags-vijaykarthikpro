@@ -1,12 +1,11 @@
-import React, { /* useState */ } from "react";
+import React /* useState */ from "react";
+import PropTypes from "prop-types";
 import "./Card.scss";
 import { Link, Switch, Route } from "react-router-dom";
-// import WishlistIcon from "../../assets/icons/wishlist-black-border.svg";
-// import WishlistFilledIcon from "../../assets/icons/wishlist-filled-black-img.svg";
 import ProductDetailsPage from "../ProductDetailsPage/ProductDetailsPage";
 
-export default function Card(props) {
-/*   const [isWishlist, setWishlist] = useState(false);
+export default function Card({ productsData }) {
+  /*   const [isWishlist, setWishlist] = useState(false);
 
   const wishlistIcon = () => {
     if (isWishlist) {
@@ -27,7 +26,7 @@ export default function Card(props) {
   };
 
   const displayProducts = () => {
-    return props.data.map((item) => {
+    return productsData.map((item) => {
       return (
         <div className="card" key={item.id}>
           <Link key={item.id} to={`/product-details/${item.id}`}>
@@ -64,3 +63,7 @@ export default function Card(props) {
     </>
   );
 }
+
+Card.propTypes = {
+  data: PropTypes.array,
+};

@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
+import { saveToLocalStorage } from "../../Utils";
+import { setAuthUser } from "../../actions";
+import PropTypes from "prop-types";
+import FirebaseContext from "../Firebase/context";
 import AppLogo from "../../assets/icons/logo-symbol.png";
 import FbIcon from "../../assets/icons/fb-logo.svg";
 import GoogleIcon from "../../assets/icons/google-logo.svg";
-import FirebaseContext from "../Firebase/context";
 import CrossIcon from "../../assets/icons/clear.svg";
-import { saveToLocalStorage } from "../../Utils";
-import { setAuthUser } from "../../actions";
 import "./Login.scss";
 
 export default function Login({ showLogin, handleModalOpen }) {
@@ -118,3 +119,13 @@ export default function Login({ showLogin, handleModalOpen }) {
     </>
   );
 }
+
+Login.propTypes = {
+  showLogin: PropTypes.bool,
+  handleModalOpen: PropTypes.func,
+};
+
+Login.defaultProps = {
+  showLogin: false,
+  handleModalOpen: () => {},
+};

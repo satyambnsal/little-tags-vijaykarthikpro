@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <div className="footer">
       <div className="ft-logo">
-        <img src={AppLogo} alt="" />
+        <img src={AppLogo} alt="app-logo" />
         <div className="ft-address">
           <span>Registered Office Address</span>
           <div className="top">
