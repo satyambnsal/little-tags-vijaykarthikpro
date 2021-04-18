@@ -18,3 +18,12 @@ export const removeFromLocalStorage = (key) => {
     return localStorage.removeItem(key);
 }
 
+export const routePathMap = {
+    men: "men clothing",
+    women: "women clothing",
+    electronics: "electronics",
+    jewellery: "jewellery",
+    tshirts: "tshirt",
+    jackets: "jacket",
+}
+

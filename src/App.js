@@ -4,7 +4,7 @@ import * as ROUTES from "./constants/routes";
 import HomePage from "./components/HomePage/HomePage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Login from "./components/Login/Login";
+import AccountPage from "./components/AccountPage/AccountPage";
 import ProductsListPage from "./components/ProductsListPage/ProductListPage";
 import ProductDetailsPage from "./components/ProductDetailsPage/ProductDetailsPage";
 import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
@@ -18,7 +18,7 @@ function App() {
           <Header />
           <Switch>
             <Route path={ROUTES.ACCOUNT}>
-              <Login />
+              <AccountPage />
             </Route>
             <Route path={ROUTES.OFFERS}>
               <ProductsListPage />
