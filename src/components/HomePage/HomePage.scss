@@ -1,4 +1,4 @@
-@use '../../../library' as library;
+@use '../../../styles.scss' as styles;
 
 .home-container {
   margin: 0 auto;
@@ -10,7 +10,7 @@
     }
   }
 
-  .section-1 {
+  .collection-section {
     background-image: url("../../assets/images/Men-women-bg.svg");
     background-repeat: no-repeat;
     background-size: 100%;
@@ -23,7 +23,7 @@
 
     .collections {
       margin: 0 auto;
-      @include library.flex-row-center;
+      @include styles.flex-row-center;
       justify-content: space-around;
       flex-wrap: wrap;
       width: 80%;
@@ -79,7 +79,7 @@
     }
   }
 
-  .section-2 {
+  .categories {
     background-color: white;
     padding: 50px;
 
@@ -90,7 +90,7 @@
 
     .categories-to-add {
       margin: 0 auto;
-      @include library.flex-row-center;
+      @include styles.flex-row-center;
       justify-content: space-evenly;
       flex-wrap: wrap;
       color: black;

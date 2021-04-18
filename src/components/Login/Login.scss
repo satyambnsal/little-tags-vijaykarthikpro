@@ -1,4 +1,4 @@
-@use "../../../library";
+@use "../../../styles.scss" as styles;
 
 .modal {
   position: fixed;
@@ -59,11 +59,11 @@
     }
 
     .login-options {
-      @include library.flex-column-center;
+      @include styles.flex-column-center;
       padding: 30px;
 
       .box {
-        @include library.flex-column-center;
+        @include styles.flex-column-center;
         justify-content: flex-start;
         align-items: flex-start;
 
@@ -72,7 +72,7 @@
         }
 
         .google-login {
-          @include library.flex-row-center;
+          @include styles.flex-row-center;
           margin-bottom: 10px;
           cursor: pointer;
           width: 100%;
@@ -91,7 +91,7 @@
         }
 
         .facebook-login {
-          @include library.flex-row-center;
+          @include styles.flex-row-center;
           cursor: pointer;
           width: 100%;
           padding: 5px 10px 5px 5px;
