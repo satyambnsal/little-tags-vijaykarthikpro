@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import FirebaseContext from "../../Firebase/context";
-import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import "../Header.scss";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { ProfileItems } from "./MenuItems";
 import { LanguageItems } from "./MenuItems";
-import { Link } from "react-router-dom";
+import "../Header.scss";
 
 export default function Dropdown({ type }) {
   const [click, setClick] = useState(false);
