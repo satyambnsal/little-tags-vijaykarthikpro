@@ -27,18 +27,19 @@ export default function Card({ productsData }) {
 
   const displayProducts = () => {
     return productsData.map((item) => {
+      const { id, image, title, price } =  item
       return (
-        <div className="card" key={item.id}>
-          <Link key={item.id} to={`/product-details/${item.id}`}>
+        <div className="card" key={id}>
+          <Link key={id} to={`/product-details/${id}`}>
             <div className="card-img">
-              <img src={item.image} alt="" />
+              <img src={image} alt="" />
             </div>
           </Link>
           <div className="card-header">
-            {displayTitleText(item.title)}
+            {displayTitleText(title)}
             <p className="price">
               <span>$</span>
-              <span className="price-text">{item.price}</span>
+              <span className="price-text">{price}</span>
             </p>
             {/* <button
               className="wishlist-btn"
