@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import App from "./App";
 import FirebaseContext from "./components/Firebase/context";
 import Firebase from "./components/Firebase/firebase";
 import store from "./store";
-import { Provider } from "react-redux";
+
 require("dotenv").config();
 
 ReactDOM.render(

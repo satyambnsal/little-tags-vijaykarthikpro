@@ -14,15 +14,15 @@ export default function HomePage() {
   return (
     <div className="home-container">
       <div className="banner-section">
-        <img className="banner" src={Banner} alt="img" />
+        <img className="banner" src={Banner} alt="banner" />
       </div>
-      <div className="section-1">
+      <div className="collection-section">
         <h1>COLLECTIONS</h1>
         <div className="collections">
           <Link to="/products/men" className="nav-links">
             <div className="men">
               <h2>MEN</h2>
-              <img src={MenPortrait} alt="img" />
+              <img src={MenPortrait} alt="men-portrait" />
             </div>
           </Link>
           <p>
@@ -33,35 +33,35 @@ export default function HomePage() {
           <Link to="/products/women" className="nav-links">
             <div className="women">
               <h2>WOMEN</h2>
-              <img src={WomenPortrait} alt="img" />
+              <img src={WomenPortrait} alt="women-portrait" />
             </div>
           </Link>
         </div>
       </div>
-      <div className="section-2">
+      <div className="categories">
         <h1>CATEGORIES TO BAG</h1>
         <div className="categories-to-add">
           <Link to="/products/jackets" className="nav-links">
             <div>
-              <img src={JacketsImg} alt="img" />
+              <img src={JacketsImg} alt="jacket" />
               <h2>Jackets</h2>
             </div>
           </Link>
           <Link to="/products/tshirts" className="nav-links">
             <div>
-              <img src={TshirtsImg} alt="img" />
+              <img src={TshirtsImg} alt="t-shirt" />
               <h2>T-shirts</h2>
             </div>
           </Link>
           <Link to="/products/electronics" className="nav-links">
             <div>
-              <img src={ElectronicsImg} alt="img" />
+              <img src={ElectronicsImg} alt="electronics" />
               <h2>Electronics</h2>
             </div>
           </Link>
           <Link to="/products/jewellery" className="nav-links">
             <div>
-              <img src={JeweleryImg} alt="img" />
+              <img src={JeweleryImg} alt="jewellery" />
               <h2>Jewellery</h2>
             </div>
           </Link>
@@ -70,4 +70,3 @@ export default function HomePage() {
     </div>
   );
 }
-

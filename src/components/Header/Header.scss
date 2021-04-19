@@ -1,4 +1,4 @@
-@use '../../../library';
+@use '../../../styles.scss' as styles;
 
 .navbar {
   background: black;
@@ -48,15 +48,12 @@
     }
 
     .menu-item {
-
       &:hover {
         .dropdown-menu {
           visibility: visible;
         }
       }
-
     }
-
   }
 
   .title {
@@ -101,7 +98,7 @@
   }
 
   .profile-menu {
-    @include library.flex-row-center;
+    @include styles.flex-row-center;
     align-items: flex-start;
     justify-content: flex-start;
     background-color: black;
@@ -113,14 +110,24 @@
     border-radius: 10px 10px 0 0;
 
     .username {
-     margin-left: 5px;
-     text-transform: capitalize;
+      margin-left: 5px;
+      text-transform: capitalize;
     }
-
   }
 
   .item-padding {
     padding: 10px;
   }
- 
+
+  .logout {
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+
+    &:hover {
+      font-weight: 600;
+    }
+  }
 }

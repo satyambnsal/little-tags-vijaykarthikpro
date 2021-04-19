@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from 'react-redux';
-import "./Header.scss";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import "./Header.scss";
 import Dropdown from "./Dropdown/Dropdown";
 import Login from "../Login/Login";
 import AppLogo from "../../assets/icons/logo-symbol.png";
@@ -11,28 +11,32 @@ import GlobeIcon from "../../assets/icons/globe.svg";
 import WishlistIcon from "../../assets/icons/wishlist.svg";
 import ProfileIcon from "../../assets/icons/person.svg";
 
-
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
-  const isUserLoggedIn = useSelector(state => state.sessionState.isUserLoggedIn);
+  const isUserLoggedIn = useSelector(
+    (state) => state.sessionState.isUserLoggedIn
+  );
 
   const showLoginModal = () => setShowLogin(!showLogin);
 
-  const renderProfileIcon = () =>{
-    if(isUserLoggedIn) {
-      return ( <div className="menu-item">
-        <Link to="/account" className="nav-links">
-          <img src={ProfileIcon} alt="" />
-        </Link>
-        <Dropdown type="profile" />
-    </div>)
+  const renderProfileIcon = () => {
+    if (isUserLoggedIn) {
+      return (
+        <div className="menu-item">
+          <Link to="/account" className="nav-links">
+            <img src={ProfileIcon} alt="profile-icon" />
+          </Link>
+          <Dropdown type="profile" />
+        </div>
+      );
     } else {
-      return (<div>
-        <button onClick={showLoginModal}>LOGIN</button>
-      </div>)
+      return (
+        <div>
+          <button onClick={showLoginModal}>LOGIN</button>
+        </div>
+      );
     }
-  }
-
+  };
 
   return (
     <div>
@@ -63,17 +67,17 @@ export default function Header() {
           </div>
           <div className="menu-item">
             <Link to="/" className="nav-links">
-              <img src={GlobeIcon} alt="" />
+              <img src={GlobeIcon} alt="globe-icon" />
             </Link>
             <Dropdown type="language" />
           </div>
           {renderProfileIcon()}
-          <Link to="/" className="nav-links">
-            <img src={WishlistIcon} alt="" />
+          <Link to="/account/wishlist" className="nav-links">
+            <img src={WishlistIcon} alt="wishlist-icon" />
           </Link>
 
           <Link to="/checkout" className="nav-links">
-            <img src={CartIcon} alt="" />
+            <img src={CartIcon} alt="cart-icon" />
           </Link>
         </div>
       </nav>

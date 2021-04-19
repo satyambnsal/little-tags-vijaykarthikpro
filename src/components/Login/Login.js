@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
-import AppLogo from "../../assets/icons/logo-symbol.png";
+import { saveToLocalStorage } from "../../Utils";
+import { setAuthUser } from "../../actions";
+import PropTypes from "prop-types";
+import FirebaseContext from "../Firebase/context";
 import FbIcon from "../../assets/icons/fb-logo.svg";
 import GoogleIcon from "../../assets/icons/google-logo.svg";
-import FirebaseContext from "../Firebase/context";
-import CrossIcon from "../../assets/icons/clear.svg";
-import { saveToLocalStorage } from '../../Utils';
-import { setAuthUser } from "../../actions";
+import Dialog from '../Dialog/Dialog';
 import "./Login.scss";
 
 export default function Login({ showLogin, handleModalOpen }) {
@@ -16,14 +16,13 @@ export default function Login({ showLogin, handleModalOpen }) {
     firebase
       .doGoogleSignIn()
       .then((authUser) => {
-
         const userDetails = {
-          email: authUser.email, 
-          name: authUser.displayName, 
-          emailVerified: authUser.emailVerified  
-        }
-       
-        saveToLocalStorage('authUser',userDetails);
+          email: authUser.email,
+          name: authUser.displayName,
+          emailVerified: authUser.emailVerified,
+        };
+
+        saveToLocalStorage("authUser", userDetails);
         setAuthUser(userDetails);
 
         handleModalOpen();
@@ -39,49 +38,80 @@ export default function Login({ showLogin, handleModalOpen }) {
       });
   };
 
+  const handleFacebookSignIn = () => {
+    firebase
+      .doFacebookSignIn()
+      .then((authUser) => {
+        console.log("Facebook auth", authUser);
+        const userDetails = {
+          email: authUser.email,
+          name: authUser.displayName,
+          emailVerified: authUser.emailVerified,
+        };
+
+        saveToLocalStorage("authUser", userDetails);
+        setAuthUser(userDetails);
+
+        handleModalOpen();
+
+        return firebase.user(authUser.user.uid).set({
+          email: authUser.user.email,
+          displayName: authUser.user.displayName,
+          roles: {},
+        });
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
+  };
+
+  const handleModalClose = () => {
+    handleModalOpen();
+    setErrorMessage("");
+  };
+
+  const loginOptions = () =>{
+    return (
+      <div className="login-options">
+          <div className="box">
+              <button className="google-login" onClick={handleGoogleSignIn}>
+                <img className="google-img" src={GoogleIcon} alt="google-icon"/>
+                <span>Continue with Google</span>
+              </button>
+              <button className="facebook-login" onClick={handleFacebookSignIn}>
+                <img className="fb-img" src={FbIcon} alt="fb-icon"  />
+                <span>Continue with Facebook</span>
+              </button>
+            </div>
+      </div>
+    )
+  }
+
+  const showErrorMessage = () => {
+    return (<div className="box">
+          <p className="login-error">{errorMessage}</p>
+      </div>);
+  }
+
   return (
     <>
-      {showLogin ? (
-        <div className="modal">
-          <div className="outer">
-            <div className="top-section">
-              <div className="logo-item">
-                <img src={AppLogo} alt="logo-img" />
-                <span className="title">Style Beast</span>
-              </div>
-              <img
-                src={CrossIcon}
-                alt="cancel-icon"
-                onClick={handleModalOpen}
-                className="close-modal"
-              />
-            </div>
-
-            {!errorMessage ? (
-              <div className="login-options">
-                <div className="box">
-                  <button className="google-login" onClick={handleGoogleSignIn}>
-                    <img
-                      className="google-img"
-                      src={GoogleIcon}
-                      alt="google-icon"
-                    />
-                    <span>Continue with Google</span>
-                  </button>
-                  <button className="facebook-login">
-                    <img src={FbIcon} alt="fb-icon" className="fb-img" />
-                    <span>Continue with Facebook</span>
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div className="box">
-                <p>{errorMessage}</p>
-              </div>
-            )}
-          </div>
-        </div>
-      ) : null}
+      {showLogin ? (<div>
+        {!errorMessage ?  
+            (<Dialog handleModalClose={handleModalClose} displayContent={loginOptions}/>) 
+          : (<Dialog handleModalClose={handleModalClose} displayContent={showErrorMessage}/>)}
+      </div>
+      ) : null
+      }
     </>
   );
 }
+
+Login.propTypes = {
+  showLogin: PropTypes.bool,
+  handleModalOpen: PropTypes.func,
+};
+
+Login.defaultProps = {
+  showLogin: false,
+  handleModalOpen: () => {},
+};

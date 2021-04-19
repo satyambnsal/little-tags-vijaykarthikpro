@@ -1,12 +1,11 @@
-import React, { /* useState */ } from "react";
+import React /* useState */ from "react";
+import PropTypes from "prop-types";
 import "./Card.scss";
 import { Link, Switch, Route } from "react-router-dom";
-// import WishlistIcon from "../../assets/icons/wishlist-black-border.svg";
-// import WishlistFilledIcon from "../../assets/icons/wishlist-filled-black-img.svg";
 import ProductDetailsPage from "../ProductDetailsPage/ProductDetailsPage";
 
-export default function Card(props) {
-/*   const [isWishlist, setWishlist] = useState(false);
+export default function Card({ productsData }) {
+  /*   const [isWishlist, setWishlist] = useState(false);
 
   const wishlistIcon = () => {
     if (isWishlist) {
@@ -27,19 +26,20 @@ export default function Card(props) {
   };
 
   const displayProducts = () => {
-    return props.data.map((item) => {
+    return productsData.map((item) => {
+      const { id, image, title, price } = item;
       return (
-        <div className="card" key={item.id}>
-          <Link key={item.id} to={`/product-details/${item.id}`}>
+        <div className="card" key={id}>
+          <Link key={id} to={`/product-details/${id}`}>
             <div className="card-img">
-              <img src={item.image} alt="" />
+              <img src={image} alt="product-card" />
             </div>
           </Link>
           <div className="card-header">
-            {displayTitleText(item.title)}
+            {displayTitleText(title)}
             <p className="price">
               <span>$</span>
-              <span className="price-text">{item.price}</span>
+              <span className="price-text">{price}</span>
             </p>
             {/* <button
               className="wishlist-btn"
@@ -64,3 +64,22 @@ export default function Card(props) {
     </>
   );
 }
+
+Card.propTypes = {
+  data: PropTypes.array.isRequired,
+};
+
+Card.defaultProps = {
+  data: [
+    {
+      id: 1,
+      title: "Mens Casual Premium Slim Fit T-Shirts ",
+      price: 22.3,
+      description:
+        "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+      category: "men clothing",
+      image:
+        "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+    },
+  ],
+};

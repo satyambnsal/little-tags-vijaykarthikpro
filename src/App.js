@@ -1,15 +1,15 @@
-import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
+import * as ROUTES from "./constants/routes";
 import HomePage from "./components/HomePage/HomePage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import * as ROUTES from "./constants/routes";
-// import AccountPage from "./components/AccountPage/AccountPage";
-import Login from "./components/Login/Login";
+import AccountPage from "./components/AccountPage/AccountPage";
 import ProductsListPage from "./components/ProductsListPage/ProductListPage";
 import ProductDetailsPage from "./components/ProductDetailsPage/ProductDetailsPage";
 import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
-import withAuthentication from './components/Session/withAuthentication';
+// import Wishlist from "./components/Wishlist/Wishlist";
+import withAuthentication from "./components/Session/withAuthentication";
 
 function App() {
   return (
@@ -18,14 +18,8 @@ function App() {
         <Router>
           <Header />
           <Switch>
-            <Route exact path={ROUTES.LANDING}>
-              <HomePage />
-            </Route>
-            <Route path={ROUTES.HOME}>
-              <HomePage />
-            </Route>
             <Route path={ROUTES.ACCOUNT}>
-              <Login />
+              <AccountPage />
             </Route>
             <Route path={ROUTES.OFFERS}>
               <ProductsListPage />
@@ -36,8 +30,14 @@ function App() {
             <Route path={ROUTES.PRODUCT_DETAILS}>
               <ProductDetailsPage />
             </Route>
+            {/* <Route path={ROUTES.WISHLIST}>
+              <Wishlist />
+            </Route> */}
             <Route path={ROUTES.CHECKOUT}>
               <CheckoutPage />
+            </Route>
+            <Route path={ROUTES.HOME}>
+              <HomePage />
             </Route>
           </Switch>
         </Router>
