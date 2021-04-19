@@ -27,12 +27,12 @@ export default function Card({ productsData }) {
 
   const displayProducts = () => {
     return productsData.map((item) => {
-      const { id, image, title, price } =  item
+      const { id, image, title, price } = item;
       return (
         <div className="card" key={id}>
           <Link key={id} to={`/product-details/${id}`}>
             <div className="card-img">
-              <img src={image} alt="" />
+              <img src={image} alt="product-card" />
             </div>
           </Link>
           <div className="card-header">
@@ -66,11 +66,11 @@ export default function Card({ productsData }) {
 }
 
 Card.propTypes = {
-  data : PropTypes.array.isRequired,
-}
+  data: PropTypes.array.isRequired,
+};
 
 Card.defaultProps = {
-  data : [
+  data: [
     {
       id: 1,
       title: "Mens Casual Premium Slim Fit T-Shirts ",
@@ -80,7 +80,6 @@ Card.defaultProps = {
       category: "men clothing",
       image:
         "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
-    }
-  ] 
-}
-
+    },
+  ],
+};

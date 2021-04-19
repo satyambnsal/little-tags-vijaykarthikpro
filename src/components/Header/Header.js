@@ -72,7 +72,7 @@ export default function Header() {
             <Dropdown type="language" />
           </div>
           {renderProfileIcon()}
-          <Link to="/" className="nav-links">
+          <Link to="/account/wishlist" className="nav-links">
             <img src={WishlistIcon} alt="wishlist-icon" />
           </Link>
 

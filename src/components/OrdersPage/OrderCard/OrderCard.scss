@@ -1,0 +1,86 @@
+@use "../../../../styles.scss" as styles;
+
+.order-main {
+  display: flex;
+  color: black;
+  flex-direction: column;
+  padding: 20px;
+  font-size: 16px;
+
+  .card-main {
+    background-color: white;
+    width: 100%;
+    padding: 20px 20px 0 20px;
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+
+    .order-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+
+      .order-image {
+        width: 100px;
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+      }
+    }
+
+    .card-bottom {
+      display: flex;
+      height: 150px;
+      justify-content: space-between;
+      margin: 20px 0 20px 0;
+
+      .address-section {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .address-content {
+        }
+      }
+
+      .price-section {
+        // text-align: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .price-details {
+          width: 250px;
+          display: flex;
+          justify-content: space-between;
+
+          li {
+            list-style: none;
+          }
+        }
+
+        .price-title,
+        .price {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .price {
+          align-items: flex-end;
+        }
+      }
+    }
+  }
+
+  // .subtitle-size {
+  //   font-size: 15px;
+  // }
+}
