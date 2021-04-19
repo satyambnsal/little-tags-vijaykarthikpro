@@ -4,7 +4,7 @@ import "./OrderCard.scss";
 export default function OrderCard({ ordersData }) {
   const displayOrder = () => {
     return ordersData.map((item) => {
-      const { id, image, title, price, description } = item;
+      const { image, title, price } = item;
       return (
         <div className="card-main">
           <div className="card-top">

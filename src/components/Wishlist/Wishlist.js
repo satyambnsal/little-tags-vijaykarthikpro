@@ -6,7 +6,6 @@ import withAuthorization from "../Session/withAuthorization";
 function Wishlist() {
   const [quantityCount, setQuantityCount] = useState(1);
   const [totalItems /* , setTotalItems */] = useState(0);
-  const [totalPrice /* , setTotalPrice */] = useState(2000);
 
   /*  const removeItems = ()=>{
     setTotalItems(totalItems - 1);
