@@ -6,8 +6,9 @@ import Orders from "../OrdersPage/Orders";
 import Wishlist from "../Wishlist/Wishlist";
 import Address from "../Address/Address";
 import * as ROUTES from "../../constants/routes";
+import withAuthorization from "../Session/withAuthorization";
 
-export default function AccountPage() {
+function AccountPage() {
   const firebase = useContext(FirebaseContext);
   const handleLogout = () => {
     firebase.doSignOut();
@@ -46,3 +47,5 @@ export default function AccountPage() {
     </div>
   );
 }
+
+export default withAuthorization(AccountPage)
