@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "author": "Vijay Karthik <vijay.karthik1010@gmail.com>",
-  "contributors": ["Rasika Hatwar <13rasikahatwar@gmail.com>"],
+  "contributors": [
+    "Rasika Hatwar <13rasikahatwar@gmail.com>"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -24,13 +26,31 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+      "kentcdodds"
+    ],
+    "plugins": [
+      "react",
+      "react-hooks"
+    ],
+    "rules": {
+      "no-unused-vars": "error",
+      "no-var": "warn",
+      "no-return-assign": "warn",
+      "no-shadow": "warn",
+      "consistent-return": "warn",
+      "no-nested-ternary": "warn",
+      "no-unneeded-ternary": "warn",
+      "import/no-duplicates": "warn",
+      "max-statements-per-line": "warn",
+      "no-duplicate-imports": "warn",
+      "prefer-const": "warn",
+      "no-negated-condition": "warn"
+    }
   },
   "browserslist": {
     "production": [
@@ -45,6 +65,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-kentcdodds": "^18.0.0",
     "redux-devtools": "^3.7.0"
   }
 }
