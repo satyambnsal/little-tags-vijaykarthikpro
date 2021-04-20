@@ -42,7 +42,6 @@ function AccountPage() {
             <Wishlist />
           </Route>
         </Switch>
-        <Orders />
       </div>
     </div>
   );
