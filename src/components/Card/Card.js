@@ -66,11 +66,11 @@ export default function Card({ productsData }) {
 }
 
 Card.propTypes = {
-  data: PropTypes.array.isRequired,
-};
+  productsData : PropTypes.array.isRequired,
+}
 
 Card.defaultProps = {
-  data: [
+  productsData : [
     {
       id: 1,
       title: "Mens Casual Premium Slim Fit T-Shirts ",

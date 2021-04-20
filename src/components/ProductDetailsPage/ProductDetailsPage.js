@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { 
+  addItemToCart, 
+  removeItemFromCart,
+  addItemToWishlist,
+  removeItemFromWishlist } from '../../actions';
 import { SIZES } from "../../Utils";
 import "./ProductDetailsPage.scss";
 import ProductDetailsImg from "../../assets/images/product-details-img.svg";
@@ -9,21 +15,33 @@ import Products from "../../data/products";
 // import Carousel from '../carousel/Carousel'
 // import SimilarProducts from "../SimilarProducts/SimilarProducts";
 
+
 export default function ProductDetailsPage() {
+
+  const cart = useSelector(state => state.cartState.cart);
+  const wishlist = useSelector(state => state.wishlistState.wishlist);
   const [quantityCount, setQuantityCount] = useState(1);
   const [product, setProduct] = useState({});
+  const [isAddToCart, setAddToCart] = useState(false);
+  const [isAddToWishlist, setAddToWishlist] = useState(false);
+  const dispatch = useDispatch();
   let location = useLocation();
   let id = location.pathname.split("/")[2];
 
   useEffect(() => {
-    Products.filter((product) => {
+    Products.map((product) => {
       if (product.id.toString() === id) {
-        console.log("product: ", product);
         setProduct(product);
       }
       return null;
     });
-  }, [id]);
+
+  },[id]);
+
+  useEffect(()=>{
+    setAddToCart(cart.includes(product));
+    setAddToWishlist(wishlist.includes(product));
+  },[cart, product, wishlist])
 
   const displaySizes = () => {
     const sizesList = Object.values(SIZES);
@@ -44,6 +62,34 @@ export default function ProductDetailsPage() {
     const countValue = quantityCount < 2 ? 1 : quantityCount - 1;
     setQuantityCount(countValue);
   };
+
+  const handleAddToCartClick = () => {
+    setAddToCart(!isAddToCart);
+  }
+
+  const handleAddToWishlistClick = () => {
+    setAddToWishlist(!isAddToWishlist);
+  }
+
+  useEffect(() =>{
+    if(isAddToCart) {
+      dispatch(addItemToCart(product));
+    } else {
+      dispatch(removeItemFromCart(product.id));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[isAddToCart])
+
+  useEffect(()=>{
+    if(isAddToWishlist) {
+      dispatch(addItemToWishlist(product));
+    } else {
+      dispatch(removeItemFromWishlist(product.id));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[isAddToWishlist])
+
+ 
 
   return (
     <div className="product-details-container">
@@ -74,13 +120,13 @@ export default function ProductDetailsPage() {
             </button>
           </div>
           <div className="add-to-buttons">
-            <button className="cart">
+            <button className="cart" onClick={handleAddToCartClick}>
               <img src={CartIcon} alt="cart-icon" />
-              <span className="cart-btn-text">Add to Cart</span>
+              <span className="cart-btn-text">{!isAddToCart ? 'Add to Cart' : 'Remove from Cart' }</span>
             </button>
-            <button className="wishlist">
+            <button className="wishlist" onClick={handleAddToWishlistClick}>
               <img src={WishlistIcon} alt="wishlist-icon" />
-              <span className="wishlist-btn-text">Add to Wishlist</span>
+              <span className="wishlist-btn-text">{!isAddToWishlist ? 'Add to Wishlist' : 'Remove from Wishlist'}</span>
             </button>
           </div>
         </div>
@@ -90,3 +136,4 @@ export default function ProductDetailsPage() {
     </div>
   );
 }
+
