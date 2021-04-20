@@ -38,7 +38,7 @@ export default function Card({ productsData }) {
           <div className="card-header">
             {displayTitleText(title)}
             <p className="price">
-              <span>$</span>
+              <span>₹</span>
               <span className="price-text">{price}</span>
             </p>
             {/* <button

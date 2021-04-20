@@ -1,85 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { removeItemFromWishlist, addItemToCart } from '../../actions';
 import "./Wishlist.scss";
-import MenProtrait from "../../assets/images/men-portrait.svg";
 import withAuthorization from "../Session/withAuthorization";
 
 function Wishlist() {
-  const [quantityCount, setQuantityCount] = useState(1);
-  const [totalItems /* , setTotalItems */] = useState(0);
 
-  /*  const removeItems = ()=>{
-    setTotalItems(totalItems - 1);
-    setTotalPrice(totalPrice - 100);
-  } */
+  const wishlist = useSelector(state=> state.wishlistState.wishlist);
+  const dispatch = useDispatch();
+  const [totalItems , setTotalItems] = useState(wishlist.length);
 
-  const increaseCount = () => {
-    setQuantityCount(quantityCount + 1);
-  };
+  useEffect(()=>{
+    setTotalItems(wishlist.length);
+  },[wishlist]);
 
-  const decreaseCount = () => {
-    const countValue = quantityCount < 2 ? 1 : quantityCount - 1;
-    setQuantityCount(countValue);
-  };
+  const displayWishlistItems = () =>{
+    return wishlist.map((product)=>{
+      const { id, image, title, price } = product;
 
-  return (
-    <div className="checkout-container">
-      <div className="cart-list">
-        <h3 className="bold-title">My Wishlist ( {totalItems} items )</h3>
-        <div className="item-row">
-          <div className="product-image">
-            <img src={MenProtrait} alt="item" />
-          </div>
-          <div className="details-column">
-            <div className="item-details">
-              <div className="main-details">
-                <span className="bold-title">Mens Casual Slim Fit</span>
-                <span className="details-text">Size : XL</span>
-                <span className="quantity-title details-text">Quantity :</span>
-                <div className="quantity">
-                  <button className="decrease-button" onClick={decreaseCount}>
-                    -
-                  </button>
-                  <span className="count-value">{quantityCount}</span>
-                  <button className="increase-button" onClick={increaseCount}>
-                    +
-                  </button>
+      return(
+          <div className="item-row" key={id}>
+            <div className="product-image">
+              <img src={image} alt="item" />
+            </div>
+            <div className="details-column">
+              <div className="item-details">
+                <div className="main-details">
+                  <span className="bold-title">{title}</span>
+                  <span className="details-text">Size : XL</span>
+                </div>
+                <div className="price">
+                  <span className="bold-title">₹ {price}</span>
                 </div>
               </div>
-              <div className="price">
-                <span className="bold-title">$ 100</span>
+              <div className="buttons">
+                <span className="wishlist-button" onClick={()=> {dispatch(addItemToCart(product)); dispatch(removeItemFromWishlist(id))}}>Add to bag</span>
+                <span className="remove-btn" onClick={()=>dispatch(removeItemFromWishlist(id))}>
+                  Remove
+                </span>
               </div>
             </div>
-            <div className="buttons">
-              <span className="wishlist-button">Add to bag</span>
-              <span className="remove-btn" /* onClick={removeItems()} */>
-                Remove
-              </span>
-            </div>
           </div>
-        </div>
-      </div>
-      {/* <div className="price-column">
-        <h3 className="bold-title">Price Details ( {totalItems} items )</h3>
-        <div>
-          <div className="price-details">
-            <div className="left bold-title">
-              <span>TOTAL MRP</span>
-              <span>DISCOUNT</span>
-              <span>COUPON</span>
-              <span>SHIPPING FEE</span>
-              <span className="total-amount">TOTAL AMOUNT</span>
-            </div>
-            <div className="right">
-              <span>$ {totalPrice}</span>
-              <span>$ 500</span>
-              <span>$ 0</span>
-              <span>FREE</span>
-              <span className="total-amount">$ {totalPrice}</span>
-            </div>
-          </div>
-          <button>PLACE ORDER</button>
-        </div>
-      </div> */}
+      )
+
+    })
+    
+  }
+
+  return (
+    <div className="wishlist-container">
+      <div className="wishlist">
+          <h3 className="bold-title">My Wishlist ( {totalItems} items )</h3>
+          {displayWishlistItems()}
+      </div>      
     </div>
   );
 }

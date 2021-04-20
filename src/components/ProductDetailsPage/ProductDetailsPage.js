@@ -103,7 +103,7 @@ export default function ProductDetailsPage() {
         <div className="description">
           <h2 className="title">{product.title ? product.title : "Jacket"}</h2>
           <h3>
-            Price : <span className="price-text">$</span>
+            Price : <span className="price-text">₹</span>
             <span className="price-text">{product.price}</span>
           </h3>
           <p className="description-text">{product.description}</p>

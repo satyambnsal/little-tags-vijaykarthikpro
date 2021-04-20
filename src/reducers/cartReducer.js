@@ -21,13 +21,13 @@ export default function cartReducer(state = initialState, action) {
         case ACTIONS.UPDATE_CART_ITEM : {
             const { cart } = state;
             const { id, size, quantity } = action
-            cart.map((product) => {
+            const udpatedCart = cart.map((product) => {
                 if(product.id === id) {
                     return { ...product, size, quantity }
                 }
                 return product;
             });
-            break;
+            return { ...state, cart: udpatedCart }
         }
         default: 
             return state;
