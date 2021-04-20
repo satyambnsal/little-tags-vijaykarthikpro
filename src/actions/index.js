@@ -7,7 +7,8 @@ import {
   CANCEL_ORDER,
   ADD_ITEM_TO_WISHLIST,
   REMOVE_ITEM_FROM_WISHLIST,
-  UPDATE_WISHLIST_ITEM } from '../constants/actionTypes';
+  UPDATE_WISHLIST_ITEM, 
+  UPDATE_CART_ITEM} from '../constants/actionTypes';
 
 // User actions
 
@@ -35,7 +36,7 @@ export const removeItemFromCart = (id) => ({
 })
 
 export const updateItemInCart = (id, size, quantity) => ({
-  type: REMOVE_ITEM_FROM_CART,
+  type: UPDATE_CART_ITEM,
   id,
   size,
   quantity
